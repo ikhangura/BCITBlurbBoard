@@ -27,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		104F98B51A5E203200E3DE17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10FE8BBA1A5E13E900F8CCDB /* BCITBlurbBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCITBlurbBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FE8BBE1A5E13E900F8CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FE8BBF1A5E13E900F8CCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		10FE8BB11A5E13E900F8CCDB = {
 			isa = PBXGroup;
 			children = (
+				104F98B51A5E203200E3DE17 /* README.md */,
 				10FE8BBC1A5E13E900F8CCDB /* BCITBlurbBoard */,
 				10FE8BD51A5E13E900F8CCDB /* BCITBlurbBoardTests */,
 				10FE8BBB1A5E13E900F8CCDB /* Products */,
@@ -411,6 +413,7 @@
 				10FE8BDE1A5E13E900F8CCDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10FE8BDF1A5E13E900F8CCDB /* Build configuration list for PBXNativeTarget "BCITBlurbBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +422,7 @@
 				10FE8BE11A5E13E900F8CCDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
