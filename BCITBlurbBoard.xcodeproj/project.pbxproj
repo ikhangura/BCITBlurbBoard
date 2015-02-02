@@ -14,6 +14,12 @@
 		10FE8BCA1A5E13E900F8CCDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FE8BC91A5E13E900F8CCDB /* Images.xcassets */; };
 		10FE8BCD1A5E13E900F8CCDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FE8BCB1A5E13E900F8CCDB /* LaunchScreen.xib */; };
 		10FE8BD91A5E13E900F8CCDB /* BCITBlurbBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */; };
+		E73DFB3D1A7F470D00B8041D /* NewsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DFB3B1A7F470D00B8041D /* NewsProtocol.swift */; };
+		E73DFB3F1A7F488A00B8041D /* CommentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DFB3E1A7F488A00B8041D /* CommentProtocol.swift */; };
+		E73DFB441A7F4AB300B8041D /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73DFB431A7F4AB300B8041D /* UserProtocol.swift */; };
+		E7924B571A7F56FE00A8C5B3 /* CourseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7924B561A7F56FE00A8C5B3 /* CourseProtocol.swift */; };
+		E7924B591A7F5ACE00A8C5B3 /* ParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7924B581A7F5ACE00A8C5B3 /* ParserProtocol.swift */; };
+		E7924B5B1A7F5C2900A8C5B3 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7924B5A1A7F5C2900A8C5B3 /* LoginProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,12 @@
 		10FE8BD21A5E13E900F8CCDB /* BCITBlurbBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCITBlurbBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FE8BD71A5E13E900F8CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCITBlurbBoardTests.swift; sourceTree = "<group>"; };
+		E73DFB3B1A7F470D00B8041D /* NewsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsProtocol.swift; path = Common/Protocols/NewsProtocol.swift; sourceTree = "<group>"; };
+		E73DFB3E1A7F488A00B8041D /* CommentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentProtocol.swift; path = Common/Protocols/CommentProtocol.swift; sourceTree = "<group>"; };
+		E73DFB431A7F4AB300B8041D /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProtocol.swift; path = Common/Protocols/UserProtocol.swift; sourceTree = "<group>"; };
+		E7924B561A7F56FE00A8C5B3 /* CourseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseProtocol.swift; path = Common/Protocols/CourseProtocol.swift; sourceTree = "<group>"; };
+		E7924B581A7F5ACE00A8C5B3 /* ParserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParserProtocol.swift; path = Common/Protocols/ParserProtocol.swift; sourceTree = "<group>"; };
+		E7924B5A1A7F5C2900A8C5B3 /* LoginProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginProtocol.swift; path = Common/Protocols/LoginProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 		10FE8BBC1A5E13E900F8CCDB /* BCITBlurbBoard */ = {
 			isa = PBXGroup;
 			children = (
+				E73DFB321A7F3F6500B8041D /* Common */,
 				10FE8BBF1A5E13E900F8CCDB /* AppDelegate.swift */,
 				10FE8BC41A5E13E900F8CCDB /* ViewController.swift */,
 				10FE8BC61A5E13E900F8CCDB /* Main.storyboard */,
@@ -115,6 +128,43 @@
 				10FE8BD71A5E13E900F8CCDB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E73DFB321A7F3F6500B8041D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E73DFB371A7F435500B8041D /* BaseClasses */,
+				E73DFB361A7F401D00B8041D /* Parsers */,
+				E73DFB331A7F3F7700B8041D /* Protocols */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		E73DFB331A7F3F7700B8041D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E73DFB3E1A7F488A00B8041D /* CommentProtocol.swift */,
+				E73DFB3B1A7F470D00B8041D /* NewsProtocol.swift */,
+				E73DFB431A7F4AB300B8041D /* UserProtocol.swift */,
+				E7924B561A7F56FE00A8C5B3 /* CourseProtocol.swift */,
+				E7924B581A7F5ACE00A8C5B3 /* ParserProtocol.swift */,
+				E7924B5A1A7F5C2900A8C5B3 /* LoginProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		E73DFB361A7F401D00B8041D /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		E73DFB371A7F435500B8041D /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,9 +267,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73DFB3F1A7F488A00B8041D /* CommentProtocol.swift in Sources */,
 				10FE8BC51A5E13E900F8CCDB /* ViewController.swift in Sources */,
 				10FE8BC31A5E13E900F8CCDB /* BCITBlurbBoard.xcdatamodeld in Sources */,
+				E7924B5B1A7F5C2900A8C5B3 /* LoginProtocol.swift in Sources */,
 				10FE8BC01A5E13E900F8CCDB /* AppDelegate.swift in Sources */,
+				E73DFB441A7F4AB300B8041D /* UserProtocol.swift in Sources */,
+				E7924B571A7F56FE00A8C5B3 /* CourseProtocol.swift in Sources */,
+				E7924B591A7F5ACE00A8C5B3 /* ParserProtocol.swift in Sources */,
+				E73DFB3D1A7F470D00B8041D /* NewsProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCITBlurbBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BCITBlurbBoard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
