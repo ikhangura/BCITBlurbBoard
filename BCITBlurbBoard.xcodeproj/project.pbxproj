@@ -133,8 +133,6 @@
 		E73DFB321A7F3F6500B8041D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E73DFB371A7F435500B8041D /* BaseClasses */,
-				E73DFB361A7F401D00B8041D /* Parsers */,
 				E73DFB331A7F3F7700B8041D /* Protocols */,
 			);
 			name = Common;
@@ -151,20 +149,6 @@
 				E7924B5A1A7F5C2900A8C5B3 /* LoginProtocol.swift */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		E73DFB361A7F401D00B8041D /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Parsers;
-			sourceTree = "<group>";
-		};
-		E73DFB371A7F435500B8041D /* BaseClasses */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
