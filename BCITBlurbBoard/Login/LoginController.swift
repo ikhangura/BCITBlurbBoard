@@ -7,7 +7,11 @@
 //
 
 import UIKit
+
 class LoginController: UIViewController {
+    
+    // get instance of HTTPClient
+    let httpClient = HTTPClient.sharedInstance;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,7 @@ class LoginController: UIViewController {
     @IBAction func LoginUser(sender: UIButton) {
         println( "User logging in!" )
         
-        //TODO : Add actual verification for user auth
+        //TODO : Add actual verification for user auth        
         let auth = true;
         if (auth)
         {
