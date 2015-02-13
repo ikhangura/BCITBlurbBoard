@@ -26,7 +26,19 @@ class LoginController: UIViewController {
     @IBAction func LoginUser(sender: UIButton) {
         println( "User logging in!" )
         
-        //TODO : Add actual verification for user auth        
+        //TODO : Add actual verification for user auth  
+        
+        // test the login route!
+        /*
+        var loginInfo = ["username":"bsoer@my.bcit.ca", "password":"password"]
+        httpClient.TestPost("http://api.thunderchicken.ca:8080/api/auth", data : loginInfo);
+        */
+        
+        // test newsfeed route
+        var getResult : NSDictionary? = httpClient.Get("http://api.thunderchicken.ca:8080/api/newsfeed/A00843110/standard/QLTw7tisv8O7ipX6B7Tdxnzv6")
+        
+        println( getResult )
+        
         let auth = true;
         if (auth)
         {
