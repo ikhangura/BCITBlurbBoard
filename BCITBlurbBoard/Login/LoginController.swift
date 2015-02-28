@@ -19,6 +19,8 @@ class LoginController: UIViewController {
     var token:String = "";
     var type:String = "";
     
+    let errorMessage:String = "The Email/Password is Incorrect";
+    
     // get instance of HTTPClient
     let httpClient = HTTPClient.sharedInstance;
 
@@ -50,19 +52,19 @@ class LoginController: UIViewController {
         
         //client side validation
         if(!validateEmail(username.text) || !validatePassword((password.text)) ){
-            error.text = "The Email/Password is Incorrect";
+            error.text = self.errorMessage;
             return;
         }
         let validEmail = username.text!;
         let validPassword = password.text!;
         
         
-        
         //server call
         var loginInfo:[String:AnyObject] = ["email":validEmail, "password": validPassword];
+        let route = "http://api.thunderchicken.ca:8080/api/auth";
 
         
-        Alamofire.request(.POST, "http://api.thunderchicken.ca:8080/api/auth", parameters: loginInfo, encoding: .JSON)
+        Alamofire.request(.POST, route, parameters: loginInfo, encoding: .JSON)
             .responseJSON{ (_, _, data, _) in
                 
                 println("Response Arrived!");
@@ -78,7 +80,7 @@ class LoginController: UIViewController {
                         if var logMessage = json["message"].string{
                             let message:String = "\(statuscode) : \(logMessage)";
                             println(message);
-                            self.error.text = "The Email/Password is Incorrect";
+                            self.error.text = self.errorMessage;
                             return;
                         }
                     }
