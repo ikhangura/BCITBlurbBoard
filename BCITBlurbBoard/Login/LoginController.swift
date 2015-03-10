@@ -14,17 +14,22 @@ class LoginController: UIViewController {
     @IBOutlet var password: UITextField!
     @IBOutlet var username: UITextField! //is actualy the email input
     @IBOutlet var error: UILabel!
+    @IBOutlet var loader: UIActivityIndicatorView!
     
     //user data variables  to be deprecated
     var token:String = "";
     var type:String = "";
     
-    let errorMessage:String = "The Email/Password is Incorrect";
+    let errorMessage:NSMutableAttributedString = NSMutableAttributedString(string: "The Email/Password is Incorrect");
     let baseUrl:String = "http://api.thunderchicken.ca/api";
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        error.adjustsFontSizeToFitWidth = true;
+        errorMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(0, errorMessage.length));
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,12 +50,17 @@ class LoginController: UIViewController {
 
     @IBAction func LoginUser(sender: UIButton) {
         
+        //clear any error content that may exist
+        error.text = "";
         
         println( "User logging in!" )
+        loader.startAnimating();
         
         //client side validation
         if(!validateEmail(username.text) || !validatePassword((password.text)) ){
-            error.text = self.errorMessage;
+            error.text = self.errorMessage.string;
+            
+            loader.stopAnimating();
             return;
         }
         let validEmail = username.text!;
@@ -62,10 +72,12 @@ class LoginController: UIViewController {
         let route = baseUrl + "/auth";
 
         
+        
         Alamofire.request(.POST, route, parameters: loginInfo, encoding: .JSON)
             .responseJSON{ (_, _, data, _) in
                 
                 println("Response Arrived!");
+                self.loader.stopAnimating();
             
                 //parse with SwiftlyJSON (located in /Common)
                 let json = JSON(data!);
@@ -78,7 +90,7 @@ class LoginController: UIViewController {
                         if var logMessage = json["message"].string{
                             let message:String = "\(statuscode) : \(logMessage)";
                             println(message);
-                            self.error.text = self.errorMessage;
+                            self.error.text = self.errorMessage.string;
                             return;
                         }
                     }
