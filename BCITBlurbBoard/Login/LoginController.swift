@@ -112,7 +112,7 @@ class LoginController: UIViewController {
             
         }
         // and usertype
-        if let userType = json["data"]["usertype"].string {
+        if let userType = json["data"]["type"].string {
             self.type = userType;
             appData.setUserType(userType);
         }
