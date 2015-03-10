@@ -15,15 +15,13 @@ class LoginController: UIViewController {
     @IBOutlet var username: UITextField! //is actualy the email input
     @IBOutlet var error: UILabel!
     
-    //user data variables
+    //user data variables  to be deprecated
     var token:String = "";
     var type:String = "";
     
     let errorMessage:String = "The Email/Password is Incorrect";
+    let baseUrl:String = "http://api.thunderchicken.ca/api";
     
-    // get instance of HTTPClient
-    let httpClient = HTTPClient.sharedInstance;
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -61,7 +59,7 @@ class LoginController: UIViewController {
         
         //server call
         var loginInfo:[String:AnyObject] = ["email":validEmail, "password": validPassword];
-        let route = "http://api.thunderchicken.ca:8080/api/auth";
+        let route = baseUrl + "/auth";
 
         
         Alamofire.request(.POST, route, parameters: loginInfo, encoding: .JSON)
@@ -92,13 +90,19 @@ class LoginController: UIViewController {
     
     private func logUserIn(json:JSON){
         
+        let appData = GlobalAppData.getGlobalAppData();
+        
+        
         //set user data, such as user token
         if let userToken = json["data"]["token"].string {
             self.token = userToken;
+            appData.setUserToken(userToken);
+            
         }
         // and usertype
         if let userType = json["data"]["usertype"].string {
             self.type = userType;
+            appData.setUserType(userType);
         }
         //send device token back to server
         if(!sentDeviceToken()){
