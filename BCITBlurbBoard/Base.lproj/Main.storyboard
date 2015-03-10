@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -62,9 +62,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-f9-24U">
                                 <rect key="frame" x="217" y="364" width="173" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.8232323232323232" green="0.040252975784594379" blue="0.10654010991000397" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-gu-OqO">
+                                <rect key="frame" x="285" y="318" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -75,6 +78,7 @@
                             <constraint firstAttribute="centerX" secondItem="l5Y-12-2kH" secondAttribute="centerX" id="DKT-hY-5C1"/>
                             <constraint firstAttribute="centerY" secondItem="PFb-Zw-xUM" secondAttribute="centerY" constant="-143.5" id="Ehy-LP-sUd"/>
                             <constraint firstItem="DFi-Xw-i7B" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="3.5" id="Fyu-yj-NjQ"/>
+                            <constraint firstItem="Eiy-gu-OqO" firstAttribute="top" secondItem="sNk-zJ-uNs" secondAttribute="bottom" constant="8" symbolic="YES" id="G2y-iS-s1R"/>
                             <constraint firstAttribute="centerY" secondItem="l5Y-12-2kH" secondAttribute="centerY" constant="65" id="GGT-bi-JBp"/>
                             <constraint firstItem="zJe-f9-24U" firstAttribute="trailing" secondItem="sNk-zJ-uNs" secondAttribute="trailing" id="H7k-8b-JHA"/>
                             <constraint firstItem="sNk-zJ-uNs" firstAttribute="top" secondItem="l5Y-12-2kH" secondAttribute="bottom" constant="30" id="Jep-lo-hjA"/>
@@ -86,6 +90,7 @@
                             <constraint firstItem="PFb-Zw-xUM" firstAttribute="top" secondItem="zJe-f9-24U" secondAttribute="bottom" constant="37" id="bLh-vZ-B6J"/>
                             <constraint firstAttribute="centerX" secondItem="PFb-Zw-xUM" secondAttribute="centerX" constant="4.5" id="c6U-u5-ejW"/>
                             <constraint firstAttribute="width" secondItem="PFb-Zw-xUM" secondAttribute="height" multiplier="600:31" constant="-232.25806451612902" id="fWi-at-yaT"/>
+                            <constraint firstItem="Eiy-gu-OqO" firstAttribute="centerX" secondItem="PFb-Zw-xUM" secondAttribute="centerX" id="hsI-ET-bgc"/>
                             <constraint firstAttribute="centerX" secondItem="DFi-Xw-i7B" secondAttribute="centerX" constant="-3.5" id="nam-Ev-9QH"/>
                             <constraint firstItem="sNk-zJ-uNs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="3:10" id="r83-kR-Nl5"/>
                             <constraint firstItem="DFi-Xw-i7B" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="7:30" constant="33" id="wVs-bs-5w8"/>
@@ -97,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="error" destination="zJe-f9-24U" id="on6-0W-Svh"/>
+                        <outlet property="loader" destination="Eiy-gu-OqO" id="IkJ-0Q-oVh"/>
                         <outlet property="password" destination="sNk-zJ-uNs" id="qFM-IW-MTK"/>
                         <outlet property="username" destination="l5Y-12-2kH" id="NhA-WL-wxB"/>
                     </connections>
