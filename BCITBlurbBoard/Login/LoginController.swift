@@ -15,11 +15,7 @@ class LoginController: UIViewController {
     @IBOutlet var username: UITextField! //is actualy the email input
     @IBOutlet var error: UILabel!
     @IBOutlet var loader: UIActivityIndicatorView!
-    
-    //user data variables  to be deprecated
-    var token:String = "";
-    var type:String = "";
-    
+        
     let errorMessage:NSMutableAttributedString = NSMutableAttributedString(string: "The Email/Password is Incorrect");
     let baseUrl:String = "http://api.thunderchicken.ca/api";
     
@@ -48,6 +44,9 @@ class LoginController: UIViewController {
         password.resignFirstResponder();
     }
 
+    /// goes through the process of validating the users login information and then makes the call
+    /// to the server to validate the user and fetch its token. On success the function calls the
+    /// logUserIn function. On failure the function will set all errors to the view and return
     @IBAction func LoginUser(sender: UIButton) {
         
         //clear any error content that may exist
@@ -100,20 +99,21 @@ class LoginController: UIViewController {
             }
         }
     
+    /// logUserIn goes through the process of setting all of the returned user data from the server
+    /// into the GlobalAppData object. It then attempts to send the apple token to the server. After, it
+    /// forwards the user to the newsfeed controller
+    /// :param: json the json that was returned from the server with the desired user information
     private func logUserIn(json:JSON){
         
         let appData = GlobalAppData.getGlobalAppData();
         
-        
         //set user data, such as user token
         if let userToken = json["data"]["token"].string {
-            self.token = userToken;
             appData.setUserToken(userToken);
             
         }
         // and usertype
         if let userType = json["data"]["type"].string {
-            self.type = userType;
             appData.setUserType(userType);
         }
         //send device token back to server
@@ -129,11 +129,18 @@ class LoginController: UIViewController {
         
     }
     
+    /// sends the device token to the server and returns true or false pending on success or
+    /// failure of sending the token
+    /// :return: Bool the status of whether sending the token succeeded or failed
     private func sentDeviceToken() -> Bool{
         
         return false;
     }
     
+    /// validates the text entered in the username field. This text is meant to be an email and is
+    /// validated as such so as not to waist server resources
+    /// :param: email the string that contains the email to be validated
+    /// :return: Bool whether or not the passed in email is valid or not
     private func validateEmail(email:NSString) -> Bool{
         
         let uString = email as String;
@@ -151,6 +158,10 @@ class LoginController: UIViewController {
         
     }
     
+    /// validates the text entered in the password field. This field is meant to be a password and
+    /// is validated as such so as not to waist server resources
+    /// :param: password the string that contains the password to be validated
+    /// :return: Bool whether or not the passed in password is valid or not
     private func validatePassword(password:NSString) -> Bool {
         
         let pString = password as String;
