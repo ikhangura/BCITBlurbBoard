@@ -29,11 +29,13 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
         var postDate : String;
     }
     
+    @IBOutlet weak var txtReply: UITextView!
     @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var txtArticleContent: UITextView!
     @IBOutlet weak var lblArticleTime: UILabel!
     @IBOutlet weak var lblArticleAuthor: UILabel!
     @IBOutlet weak var tblComment: UITableView!
+    @IBOutlet weak var lblPostStatus: UILabel!
     
     var articleID : String!;
     
@@ -62,7 +64,8 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
         //  /api/newsfeed/{userid}/artcile/{newsid}/{token}
         routeGetArticleWithComments = baseUrl! + "/newsfeed/" + userID! + "/article/" + articleID + "/" + userToken!;
         
-        routeNewCommentForArticle = baseUrl! + "";
+        // POST /api/newsfeed/:userid/article/:articleid/comment/:token
+        routeNewCommentForArticle = baseUrl! + "/newsfeed/" + userID! + "/article/" + articleID + "/comment/" + userToken!;
         loadData();
     }
     
@@ -78,6 +81,7 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
         lblArticleAuthor.text = articleDetails?.authorname;
         lblArticleTime.text = articleDetails?.postDate;
         navTitle.title = articleDetails?.title;
+        txtReply.text.removeAll(keepCapacity: false);
     }
     
     
@@ -176,6 +180,37 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
             postDate: _postDate);
     }
     
+    @IBAction func btnPostPressed(sender: UIButton) {
+        let data : [String:AnyObject] = ["content":txtReply.text];
+        Alamofire.request(.POST, routeNewCommentForArticle!, parameters: data, encoding: .JSON)
+            .responseJSON{ (req, res, data, error) in
+                
+                println("Post Comment Response!");
+                
+                //parse with SwiftlyJSON (located in /Common)
+                let json = JSON(data!);
+                println(data);
+                if var statuscode = json["statuscode"].int
+                {
+                    if (statuscode == 201)
+                    {
+                        // Data successfully received
+                        self.txtReply.text.removeAll(keepCapacity: false);
+                        self.lblPostStatus.text = "Your comment has been posted";
+                        return;
+                    }
+                    else
+                    {
+                        if var logMessage = json["message"].string
+                        {
+                            let message:String = "\(statuscode) : \(logMessage)";
+                            println(message);
+                            return;
+                        }
+                    }
+                }
+        }
+    }
     @IBAction func btnBackPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil);    }
     /*
