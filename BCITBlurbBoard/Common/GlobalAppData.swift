@@ -16,6 +16,7 @@ public class GlobalAppData{
     
     private var token:String?;
     private var usertype:String?;
+    private var userid:String?;
     
     private init(){};
     
@@ -49,5 +50,13 @@ public class GlobalAppData{
     /// :param: usertype the type of user being set
     public func setUserType(usertype:String){
         self.usertype = usertype;
+    }
+    
+    public func setUserId(userid:String){
+        self.userid = userid;
+    }
+    
+    public func getUserId()->String?{
+        return self.userid;
     }
 }

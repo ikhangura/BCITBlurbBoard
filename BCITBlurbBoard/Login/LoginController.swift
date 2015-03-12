@@ -11,6 +11,8 @@ import AlamoFire
 
 class LoginController: UIViewController {
     
+   
+    @IBOutlet var criticalnewslabel: UILabel!
     @IBOutlet var password: UITextField!
     @IBOutlet var username: UITextField! //is actualy the email input
     @IBOutlet var error: UILabel!
@@ -24,6 +26,7 @@ class LoginController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         error.adjustsFontSizeToFitWidth = true;
         errorMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(0, errorMessage.length));
+        self.getCriticalNews();
         
         
     }
@@ -42,6 +45,40 @@ class LoginController: UIViewController {
     @IBAction func backgroundTap(sender: UIControl){
         username.resignFirstResponder();
         password.resignFirstResponder();
+    }
+    
+    private func getCriticalNews(){
+        let route = baseUrl + "/newsfeed/critical";
+        
+        
+        Alamofire.request(.GET, route)
+            .responseJSON{ (_, _, data, _) in
+                let json = JSON(data!);
+                let count = json["data"]["criticalnews"].array?.count;
+                
+                if(count > 0){
+                    var newsText:String = "**Important**\n";
+                    for(var i = 0; i < count; i++){
+                        if let title = json["data"]["criticalnews"][i]["title"].string {
+                            newsText += title + "\n";
+                        }
+                    }
+                    self.criticalnewslabel.text = newsText;
+                    self.fadeInBanner();
+
+                }
+                
+                
+                
+                
+            }
+        
+    }
+    
+    private func fadeInBanner(){
+        UIView.animateWithDuration(1.5, animations: {
+            self.criticalnewslabel.alpha = 1;
+        });
     }
 
     /// goes through the process of validating the users login information and then makes the call
@@ -116,6 +153,12 @@ class LoginController: UIViewController {
         if let userType = json["data"]["type"].string {
             appData.setUserType(userType);
         }
+        
+        //and user id
+        if let userid = json["data"]["userid"].string{
+            appData.setUserId(userid);
+        }
+        
         //send device token back to server
         if(!sentDeviceToken()){
             println("Failed to send device token. Some functionality may not work. Re-login to try again");
