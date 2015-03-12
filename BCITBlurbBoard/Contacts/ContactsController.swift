@@ -38,11 +38,11 @@ class ContactsController: UIViewController , UITableViewDataSource, UITableViewD
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
        self.view.addSubview(tableView)
        // tableView.reloadData();
-       // Alamofire.request(.GET,"http://api.thunderchicken.ca/api/contacts/userId/" + token)
-            //.responseJSON { (_,_, json, _) in
-               
+        Alamofire.request(.GET,"http://api.thunderchicken.ca/api/contacts/" + userId + "/" + token)
+            .responseJSON { (_,_, json, _) in
+        
                 // comment above line and uncomment following for testing
-       Alamofire.request(.GET, "http://api.thunderchicken.ca/api/contacts/A00843110/" + token).responseJSON { (request, response, json, error) in
+//       Alamofire.request(.GET, "http://api.thunderchicken.ca/api/contacts/A00843110/" + token).responseJSON { (request, response, json, error) in
             println(json)
             if json != nil {
                 var jsonObj = JSON(json!)
