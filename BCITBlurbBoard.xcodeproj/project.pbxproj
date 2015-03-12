@@ -16,7 +16,6 @@
 		10FE8BCD1A5E13E900F8CCDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FE8BCB1A5E13E900F8CCDB /* LaunchScreen.xib */; };
 		10FE8BD91A5E13E900F8CCDB /* BCITBlurbBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */; };
 		C9513A801A8BCF7A00D5C1F8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9513A7F1A8BCF7A00D5C1F8 /* HTTPClient.swift */; };
-		C95B9FC91AAF648E00C59633 /* NewsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B9FC81AAF648E00C59633 /* NewsItemCell.swift */; };
 		C9E154511A8C3C68005EDEC7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1544E1A8C3BE9005EDEC7 /* Alamofire.framework */; };
 		C9E154521A8C3C68005EDEC7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1544E1A8C3BE9005EDEC7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E72E36601A83258600CCBE1D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72E365F1A83258600CCBE1D /* LoginController.swift */; };
@@ -100,7 +99,6 @@
 		10FE8BD71A5E13E900F8CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCITBlurbBoardTests.swift; sourceTree = "<group>"; };
 		C9513A7F1A8BCF7A00D5C1F8 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		C95B9FC81AAF648E00C59633 /* NewsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsItemCell.swift; path = Newsfeed/NewsItemCell.swift; sourceTree = "<group>"; };
 		C9E154481A8C3BE9005EDEC7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		E72E365F1A83258600CCBE1D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Login/LoginController.swift; sourceTree = "<group>"; };
 		E72E36621A83268C00CCBE1D /* NewsfeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsfeedController.swift; path = Newsfeed/NewsfeedController.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				E72E36621A83268C00CCBE1D /* NewsfeedController.swift */,
 				E72E36641A83270600CCBE1D /* NewsfeedStoryboard.storyboard */,
 				E72E366B1A832CC300CCBE1D /* NewArticleController.swift */,
-				C95B9FC81AAF648E00C59633 /* NewsItemCell.swift */,
 			);
 			name = Newsfeed;
 			sourceTree = "<group>";
@@ -449,7 +446,6 @@
 				E7924B571A7F56FE00A8C5B3 /* CourseProtocol.swift in Sources */,
 				E7E4E5021A83345900D97C90 /* SingleContactController.swift in Sources */,
 				E7924B591A7F5ACE00A8C5B3 /* ParserProtocol.swift in Sources */,
-				C95B9FC91AAF648E00C59633 /* NewsItemCell.swift in Sources */,
 				E72E36781A83311D00CCBE1D /* FilteredNewsController.swift in Sources */,
 				E72E366A1A832B9700CCBE1D /* ContactsController.swift in Sources */,
 				1095D7791AA2759B009F19F2 /* SwiftyJSON.swift in Sources */,
