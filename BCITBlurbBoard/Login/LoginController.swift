@@ -48,11 +48,13 @@ class LoginController: UIViewController {
     }
     
     private func getCriticalNews(){
+        println("Login - Calling Critical News");
         let route = baseUrl + "/newsfeed/critical";
         
         
         Alamofire.request(.GET, route)
             .responseJSON{ (_, _, data, _) in
+                println("Login - Critical News Recieved");
                 let json = JSON(data!);
                 let count = json["data"]["criticalnews"].array?.count;
                 
@@ -89,7 +91,7 @@ class LoginController: UIViewController {
         //clear any error content that may exist
         error.text = "";
         
-        println( "User logging in!" )
+        println( "Login - User logging in!" )
         loader.startAnimating();
         
         //client side validation
@@ -112,7 +114,7 @@ class LoginController: UIViewController {
         Alamofire.request(.POST, route, parameters: loginInfo, encoding: .JSON)
             .responseJSON{ (_, _, data, _) in
                 
-                println("Response Arrived!");
+                println("Login - Response Arrived!");
                 self.loader.stopAnimating();
             
                 //parse with SwiftlyJSON (located in /Common)
@@ -166,7 +168,7 @@ class LoginController: UIViewController {
         
         //send device token back to server
         if(!sentDeviceToken()){
-            println("Failed to send device token. Some functionality may not work. Re-login to try again");
+            println("Login - Failed to send device token. Some functionality may not work. Re-login to try again");
         }
         
         //send to newsfeed page
