@@ -17,6 +17,7 @@ public class GlobalAppData{
     private var token:String?;
     private var usertype:String?;
     private var userid:String?;
+    private var username:String?;
     
     private init(){};
     
@@ -58,5 +59,13 @@ public class GlobalAppData{
     
     public func getUserId()->String?{
         return self.userid;
+    }
+    
+    public func setUserName(username:String){
+        self.username = username;
+    }
+    
+    public func getUserName()->String?{
+        return self.username;
     }
 }

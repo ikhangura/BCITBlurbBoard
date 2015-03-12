@@ -159,6 +159,11 @@ class LoginController: UIViewController {
             appData.setUserId(userid);
         }
         
+        //and username
+        if let username = json["data"]["name"].string{
+            appData.setUserName(username);
+        }
+        
         //send device token back to server
         if(!sentDeviceToken()){
             println("Failed to send device token. Some functionality may not work. Re-login to try again");
