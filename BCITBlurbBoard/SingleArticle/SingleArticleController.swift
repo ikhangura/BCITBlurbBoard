@@ -11,7 +11,7 @@ import UIKit
 import Foundation
 import AlamoFire
 
-class SingleArticleController: UIViewController, UITableViewDataSource {
+class SingleArticleController: UIViewController, UITableViewDataSource, UITextViewDelegate {
     private struct ArticleComment
     {
         var Comment : String;
@@ -56,8 +56,7 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        // TODO Alan: Use data from GlobalAppData
-        userID = "A00843110";
+        userID = USERINFO.getUserId();
         userToken = USERINFO.getUserToken();
         baseUrl = "http://api.thunderchicken.ca/api";
         
@@ -67,6 +66,7 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
         // POST /api/newsfeed/:userid/article/:articleid/comment/:token
         routeNewCommentForArticle = baseUrl! + "/newsfeed/" + userID! + "/article/" + articleID + "/comment/" + userToken!;
         loadData();
+        txtReply.delegate = self;
     }
     
     
@@ -213,6 +213,14 @@ class SingleArticleController: UIViewController, UITableViewDataSource {
     }
     @IBAction func btnBackPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil);    }
+    
+    func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
+        if(replacementText == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     /*
     // MARK: - Navigation
     
