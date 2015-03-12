@@ -9,19 +9,34 @@
 import UIKit
 import Alamofire
 
+struct NewsItem
+{
+    var index : Int
+    
+    var newsid : String
+    var title : String
+    var content : String
+    var userid : String
+    var author : String
+    var datetime : String
+    var numComments : String
+}
+
 class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     // outlets
     @IBOutlet weak var tableView: UITableView!
     
     // class variables
+    var newsArray : [NewsItem] = []
     let cellIdentifier : String = "newsCell"
-    let route : String = "http://api.thunderchicken.ca/api/newsfeed"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        self.newsArray = Array()
         
         // get news via Alamofire API call
         getNews()
@@ -40,7 +55,7 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     // returns the number of items to display!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int ) -> Int
     {
-        return self.items.count
+        return self.newsArray.count
     }
     
     // returns the number of sections in this table
@@ -59,11 +74,11 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var cell : NewsItemCell!         = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as NewsItemCell
-        cell.CellTitle.text              = items[indexPath.row][0]
-        cell.MessagePreview.text         = items[indexPath.row][1]
-        cell.Date.text                   = items[indexPath.row][2]
-        cell.Author.text                 = items[indexPath.row][3]
-        cell.CommentNum.text             = items[indexPath.row][4]
+        cell.CellTitle.text              = self.newsArray[indexPath.row].title
+        cell.MessagePreview.text         = self.newsArray[indexPath.row].content
+        cell.Date.text                   = self.newsArray[indexPath.row].datetime
+        cell.Author.text                 = self.newsArray[indexPath.row].author
+        cell.CommentNum.text             = self.newsArray[indexPath.row].numComments
         
         return cell
     }
@@ -72,6 +87,11 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView : UITableView, didSelectRowAtIndexPath indexPath : NSIndexPath)
     {
         // do some stuff here
+        var storyboard = UIStoryboard(name : "SingleArticleStoryboard", bundle: nil);
+        var controller = storyboard.instantiateViewControllerWithIdentifier("singlearticle") as UIViewController;
+        let dstController = controller as SingleArticleController;
+        dstController.articleID = newsArray[indexPath.row].newsid
+        self.presentViewController(controller, animated: true, completion: nil);
     }
     
     //alamofire info
@@ -81,9 +101,10 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         let appData : GlobalAppData! = GlobalAppData.getGlobalAppData()
         let uid = appData.getUserId()
-        var userId:[String:AnyObject] = ["userid" : uid ]
+        let token = appData.getUserToken()
+        let route : String = "http://api.thunderchicken.ca/api/newsfeed/" + uid! + "/standard/" + token!
         
-        Alamofire.request(.GET, route, parameters: userId, encoding: .JSON)
+        Alamofire.request(.GET, route)
             .responseJSON{ (_, _, data, _) in
                 
                 println("News response Arrived!")
@@ -97,7 +118,8 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
                     if (statuscode == 200)
                     {
                         //proceed news items!
-                        self.displayNewsItems(json)
+                        self.displayNewsItems(json["data"]["news"].arrayValue)
+                        self.tableView.reloadData()
                     }
                     else
                     {
@@ -112,8 +134,26 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func displayNewsItems(json : JSON)
+    func displayNewsItems(json : [JSON])
     {
+        var count = 0
+        
+        for j in json
+        {
+            var ni : NewsItem = NewsItem(
+                index        : count,
+                newsid       : j["newsid"].stringValue,
+                title        : j["title"].stringValue,
+                content      : j["content"].stringValue,
+                userid       : j["userid"].stringValue,
+                author       : j["author"].stringValue,
+                datetime     : j["datetime"].stringValue,
+                numComments  : j["numcomments"].stringValue
+            )
+            
+            self.newsArray.append(ni)
+            count++
+        }
         
     }
     

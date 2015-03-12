@@ -185,11 +185,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="Author" destination="LWM-c4-T8T" id="GCl-fK-HoA"/>
-                                            <outlet property="CellTitle" destination="COa-Yg-FqX" id="lfe-mC-8ov"/>
-                                            <outlet property="CommentNum" destination="aj9-LV-cBB" id="M3q-ru-x3h"/>
-                                            <outlet property="Date" destination="sTM-v6-wca" id="wjZ-yb-pK2"/>
-                                            <outlet property="MessagePreview" destination="Ba0-Ka-hmh" id="cXk-7R-4Ch"/>
+                                            <outlet property="Author" destination="LWM-c4-T8T" id="1sg-Tm-M0L"/>
+                                            <outlet property="CellTitle" destination="COa-Yg-FqX" id="LgG-4G-oea"/>
+                                            <outlet property="CommentNum" destination="aj9-LV-cBB" id="4Ma-pc-PN6"/>
+                                            <outlet property="Date" destination="sTM-v6-wca" id="hKT-05-5iD"/>
+                                            <outlet property="MessagePreview" destination="Ba0-Ka-hmh" id="sPh-aQ-P9T"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
