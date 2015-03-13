@@ -12,12 +12,12 @@ import Alamofire
 
 
 
-class ContactsController: UIViewController , UITableViewDataSource, UITableViewDelegate {
+class ContactsController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     let appData = GlobalAppData.getGlobalAppData();
     
+    @IBOutlet var searchBar: UISearchBar!
     let baseUrl:String = "http://api.thunderchicken.ca/api";
-    
-   // let route = baseUrl + "/contacts/userid/token";
+    @IBOutlet var tableView: UITableView!
 
     @IBAction func btnBack(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil);
@@ -25,19 +25,22 @@ class ContactsController: UIViewController , UITableViewDataSource, UITableViewD
         var tableData: [JSON] = []
     
     var tableViewController = UITableViewController (style: .Plain)
+    var filteredTableData = [String]()
+    var resultSearchController = UISearchController()
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
         let token:String! = appData.getUserToken();
         let userId:String! = appData.getUserId()
+       
+       //var tableView = tableViewController.tableView;
         
-        // Do any additional setup after loading the view, typically from a nib.
-        var tableView = tableViewController.tableView;
-       tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-       self.view.addSubview(tableView)
-       // tableView.reloadData();
+       self.tableView.dataSource = self
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+          self.view.addSubview(tableView)
+      
+        
         Alamofire.request(.GET,"http://api.thunderchicken.ca/api/contacts/" + userId + "/" + token)
             .responseJSON { (_,_, json, _) in
         
@@ -50,7 +53,7 @@ class ContactsController: UIViewController , UITableViewDataSource, UITableViewD
                 if let data = jsonObj["data"]["contacts"].arrayValue as [JSON]?{
                    
                     self.tableData = data
-                     tableView.reloadData();
+                     self.tableView.reloadData();
                     
                 }
             }
@@ -70,10 +73,35 @@ class ContactsController: UIViewController , UITableViewDataSource, UITableViewD
         var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         let data = self.tableData[indexPath.row]
         cell.textLabel?.text = data["name"].string
-        
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
-   
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var storyboard = UIStoryboard(name : "SingleContactStoryboard", bundle: nil);
+        var controller = storyboard.instantiateViewControllerWithIdentifier("singlecontact") as UIViewController;
+        let dstController = controller as SingleContactController;
     
+       self.presentViewController(controller, animated: true, completion: nil);
+    }
+    
+/* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "singlecontact" {
+            let candyDetailViewController = segue.destinationViewController as UIViewController
+            if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
+                let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
+            let destinationTitle = self.tableData[indexPath.row].description
+                candyDetailViewController.title = destinationTitle
+            } else {
+               
+
+                let indexPath = self.tableView.indexPathForSelectedRow()!
+                 let data = self.tableData[indexPath.row]
+                let destinationTitle = data["name"].string
+                candyDetailViewController.title = destinationTitle
+            }
+        }
+    }*/
+
     
 }
