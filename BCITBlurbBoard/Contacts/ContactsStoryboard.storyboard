@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Title-->
+        <scene sceneID="RDV-mi-b6b">
+            <objects>
+                <viewController storyboardIdentifier="contacts" id="mNN-dT-t8q" customClass="ContactsController" customModule="BCITBlurbBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6fh-2M-4JC"/>
+                        <viewControllerLayoutGuide type="bottom" id="N7t-oX-NEc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j90-nD-Iiw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vt1-Ke-2Gh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Contacts" id="N9E-na-LQo">
+                                        <barButtonItem key="rightBarButtonItem" title="Back" id="Svw-EH-0BL">
+                                            <connections>
+                                                <action selector="btnBack:" destination="mNN-dT-t8q" id="oTA-3W-TqL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="leading" secondItem="j90-nD-Iiw" secondAttribute="leading" id="Pmc-R6-JhY"/>
+                            <constraint firstAttribute="trailing" secondItem="vt1-Ke-2Gh" secondAttribute="trailing" id="sLV-wf-3fx"/>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="top" secondItem="j90-nD-Iiw" secondAttribute="top" id="x57-bz-8qg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="vt1-Ke-2Gh"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Pmc-R6-JhY"/>
+                                <exclude reference="sLV-wf-3fx"/>
+                                <exclude reference="x57-bz-8qg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="vt1-Ke-2Gh"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Pmc-R6-JhY"/>
+                                <include reference="sLV-wf-3fx"/>
+                                <include reference="x57-bz-8qg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="sYI-TU-ope"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJD-Wb-9tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="249" y="346.5"/>
+        </scene>
+    </scenes>
+</document>
