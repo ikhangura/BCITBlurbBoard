@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 class NewArticleController: UIViewController {
     
     override func viewDidLoad() {
@@ -23,4 +25,25 @@ class NewArticleController: UIViewController {
     @IBAction func btnBackPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // Send entry to API
+    
+    
+    @IBAction func donePressed(sender: AnyObject) {
+        self.dismissSelf()
+    }
+    
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissSelf()
+    }
+    
+    func updateExpiryField() {
+        
+    }
+    
+    // Dismiss view
+    func dismissSelf() {
+        [self .dismissViewControllerAnimated(true, completion: nil)]
+    }
+    
 }
