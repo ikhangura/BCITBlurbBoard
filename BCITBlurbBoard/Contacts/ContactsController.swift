@@ -1,3 +1,4 @@
+
 //
 //  ContactsController.swift
 //  BCITBlurbBoard
@@ -73,35 +74,23 @@ class ContactsController: UIViewController , UITableViewDataSource, UITableViewD
         var cell : UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         let data = self.tableData[indexPath.row]
         cell.textLabel?.text = data["name"].string
+        
+        
+       
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+         let data = self.tableData[indexPath.row]
         
         var storyboard = UIStoryboard(name : "SingleContactStoryboard", bundle: nil);
         var controller = storyboard.instantiateViewControllerWithIdentifier("singlecontact") as UIViewController;
         let dstController = controller as SingleContactController;
-    
+         dstController.lblContactId = data["userid"].string!
+         //println(data["name"].string!)
        self.presentViewController(controller, animated: true, completion: nil);
     }
     
-/* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "singlecontact" {
-            let candyDetailViewController = segue.destinationViewController as UIViewController
-            if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
-                let indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
-            let destinationTitle = self.tableData[indexPath.row].description
-                candyDetailViewController.title = destinationTitle
-            } else {
-               
-
-                let indexPath = self.tableView.indexPathForSelectedRow()!
-                 let data = self.tableData[indexPath.row]
-                let destinationTitle = data["name"].string
-                candyDetailViewController.title = destinationTitle
-            }
-        }
-    }*/
 
     
 }
