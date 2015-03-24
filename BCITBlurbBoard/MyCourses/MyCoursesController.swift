@@ -7,7 +7,20 @@
 //
 
 import UIKit
-class MyCoursesController : UIViewController
+import alamofire
+
+struct CourseItem
+{
+    var index : Int
+    
+    var courseid : String
+    var coursetitle : String
+    var dates : String
+    var roomnumber : String
+    var instructor : String
+}
+
+class MyCoursesController : UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     override func viewDidLoad() {
         super.viewDidLoad()
