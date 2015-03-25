@@ -312,19 +312,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-2g-bp1">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6m-j5-l4p">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CH-Pa-zlq">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vv-PT-Jcn">
@@ -345,26 +345,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Put text here." translatesAutoresizingMaskIntoConstraints="NO" id="PUz-Rs-EQm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="PUz-Rs-EQm">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critical:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAD-5R-bV1">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dt2-YX-stf">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <connections>
+                                    <action selector="criticalSwitched:" destination="zSX-eO-2DG" eventType="touchUpInside" id="hzT-M4-uM0"/>
+                                </connections>
                             </switch>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgd-LY-q7X">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HbL-it-khb" firstAttribute="top" secondItem="NGn-Wa-p75" secondAttribute="top" id="0Ow-0s-Fj3"/>
                             <constraint firstItem="2vv-PT-Jcn" firstAttribute="top" secondItem="2TK-el-NMQ" secondAttribute="bottom" constant="31" id="383-z0-xiH"/>
+                            <constraint firstItem="Pgd-LY-q7X" firstAttribute="top" secondItem="VAD-5R-bV1" secondAttribute="bottom" constant="13.5" id="4ZE-pf-8ao"/>
                             <constraint firstItem="PUz-Rs-EQm" firstAttribute="top" secondItem="VAD-5R-bV1" secondAttribute="bottom" constant="10.5" id="4iU-vD-d2g"/>
                             <constraint firstItem="sM8-2g-bp1" firstAttribute="leading" secondItem="NGn-Wa-p75" secondAttribute="leadingMargin" id="7de-ul-vbB"/>
                             <constraint firstItem="sM8-2g-bp1" firstAttribute="top" secondItem="HbL-it-khb" secondAttribute="bottom" constant="11" id="B0a-6p-9r6"/>
@@ -386,6 +393,7 @@
                             <constraint firstItem="jTP-HI-mb4" firstAttribute="trailing" secondItem="NGn-Wa-p75" secondAttribute="trailingMargin" id="bdN-XS-VBZ"/>
                             <constraint firstItem="Dt2-YX-stf" firstAttribute="leading" secondItem="VAD-5R-bV1" secondAttribute="trailing" constant="1.5" id="ge4-L3-Udx"/>
                             <constraint firstItem="jTP-HI-mb4" firstAttribute="top" secondItem="Wht-GC-srK" secondAttribute="bottom" constant="8" id="hjf-Xd-hU7"/>
+                            <constraint firstAttribute="centerX" secondItem="Pgd-LY-q7X" secondAttribute="centerX" id="ht8-I2-88S"/>
                             <constraint firstAttribute="trailing" secondItem="HbL-it-khb" secondAttribute="trailing" id="lXA-eJ-ZPy"/>
                             <constraint firstItem="VAD-5R-bV1" firstAttribute="leading" secondItem="NGn-Wa-p75" secondAttribute="leadingMargin" id="o7v-ZA-jrR"/>
                             <constraint firstItem="4CH-Pa-zlq" firstAttribute="top" secondItem="z6m-j5-l4p" secondAttribute="bottom" constant="17" id="xvG-b5-ECw"/>
@@ -402,6 +410,7 @@
                                 <exclude reference="PUz-Rs-EQm"/>
                                 <exclude reference="VAD-5R-bV1"/>
                                 <exclude reference="Dt2-YX-stf"/>
+                                <exclude reference="Pgd-LY-q7X"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="383-z0-xiH"/>
@@ -410,6 +419,8 @@
                                 <exclude reference="WJe-Xi-bFz"/>
                                 <exclude reference="CvR-9s-1Hj"/>
                                 <exclude reference="xvG-b5-ECw"/>
+                                <exclude reference="4ZE-pf-8ao"/>
+                                <exclude reference="ht8-I2-88S"/>
                                 <exclude reference="HEU-hB-u7W"/>
                                 <exclude reference="IAk-Mq-bfP"/>
                                 <exclude reference="o7v-ZA-jrR"/>
@@ -444,6 +455,7 @@
                                 <include reference="PUz-Rs-EQm"/>
                                 <include reference="VAD-5R-bV1"/>
                                 <include reference="Dt2-YX-stf"/>
+                                <include reference="Pgd-LY-q7X"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="383-z0-xiH"/>
@@ -452,6 +464,8 @@
                                 <include reference="WJe-Xi-bFz"/>
                                 <include reference="CvR-9s-1Hj"/>
                                 <include reference="xvG-b5-ECw"/>
+                                <include reference="4ZE-pf-8ao"/>
+                                <include reference="ht8-I2-88S"/>
                                 <include reference="HEU-hB-u7W"/>
                                 <include reference="IAk-Mq-bfP"/>
                                 <include reference="o7v-ZA-jrR"/>
@@ -477,9 +491,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="contentField" destination="PUz-Rs-EQm" id="mE4-Fm-Z9B"/>
                         <outlet property="criticalSwitch" destination="Dt2-YX-stf" id="scF-2L-e9S"/>
                         <outlet property="doneButton" destination="zhQ-sz-RRW" id="bR2-xH-bfk"/>
                         <outlet property="expTextField" destination="jTP-HI-mb4" id="QD4-KX-agG"/>
+                        <outlet property="pickerToCat" destination="Pgd-LY-q7X" id="P4u-30-dhF"/>
+                        <outlet property="receiverField" destination="Wht-GC-srK" id="qAA-In-ruc"/>
                         <outlet property="titleField" destination="2vv-PT-Jcn" id="gyh-eB-dtF"/>
                     </connections>
                 </viewController>

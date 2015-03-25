@@ -9,28 +9,39 @@
 import UIKit
 import Alamofire
 
-class NewArticleController: UIViewController, UITextFieldDelegate {
+class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate {
     
+    //Labels
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var expiryLabel: UIPickerView!
+    @IBOutlet weak var criticalLabel: UILabel!
+    
+    //Fields and buttons
     @IBOutlet var titleField: UITextField!
     @IBOutlet var criticalSwitch: UISwitch!
-    @IBOutlet weak var expTextField: UITextField!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet var expTextField: UITextField!
+    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var receiverField: UITextField!
+    @IBOutlet var contentField: UITextView!
+    @IBOutlet var pickerToCat: UIPickerView!
     
+    private let USERINFO = GlobalAppData.getGlobalAppData()
     private var popDatePicker:PopDatePicker?
     private var baseUrl:String!
     private var routeGetPostableContacts:String?
     private var routePostNewsArticle:String?
-    private let USERINFO = GlobalAppData.getGlobalAppData()
     private var userID:String?
     private var userToken:String?
     private var msSqlDate:String?
+    private var currentCourseId:String?
     
-    private struct PostableContact {
-        var usercoursesectionid:String
-        var usercoursesectionname:String
+    struct PostableContact {
+        var usercoursesectionid:String = ""
+        var usercoursesectionname:String = ""
     }
     
-    private var postableContacts:[PostableContact]!
+    private var postableContacts:[PostableContact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +63,13 @@ class NewArticleController: UIViewController, UITextFieldDelegate {
         
         loadPostableContacts()
         
+        println(postableContacts)
+        
+        // Itempicker
+        pickerToCat.hidden = true
+        receiverField.delegate = self
+        pickerToCat.delegate = self
+        
         // Datepicker
         popDatePicker = PopDatePicker(forTextField : expTextField)
         expTextField.delegate = self
@@ -62,16 +80,38 @@ class NewArticleController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-//    @IBAction func enterTitle(sender: UITextField) {
-//        if (titleField.text != null && receiverField.text != null)
-//        {
-//            doneButton.enabled = true
-//        }
-//        else doneButton.enabled = false
-//    }
+    @IBAction func enterTitle(sender: UITextField) {
+        doneButton.enabled = (titleField.text != "" && receiverField.text != "" && contentField.text != "")
+    }
     
+    // returns the number of 'columns' to display.
+    func numberOfComponentsInPickerView(pickerView:UIPickerView!) -> Int {
+        return 1
+    }
     
-    // User selects the expiry text field
+    // returns the # of rows in each component..
+    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int{
+        return postableContacts.count
+    }
+    
+    func pickerView(pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
+        return postableContacts[row].usercoursesectionname
+    }
+    
+    func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int)
+    {
+        receiverField.text = postableContacts[row].usercoursesectionname
+        currentCourseId = postableContacts[row].usercoursesectionid
+        
+        contentField.hidden = false
+        pickerToCat.hidden = true
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        //pickerToCat.hidden = true
+    }
+    
+    // User selects the a text field
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
         if (textField === expTextField) {
@@ -100,22 +140,51 @@ class NewArticleController: UIViewController, UITextFieldDelegate {
                 
             })
             return false
+            // popDatePicker
+        }
+        else if (textField === receiverField) {
+            
+            // dismiss keyboard
+            resign()
+            
+            // show 'to' picker
+            contentField.hidden = true
+            pickerToCat.hidden = false
+            
+            println("Enter receivers.")
+            doneButton.enabled = (titleField.text != "" && receiverField.text != "" && contentField.text != "")
+
+            return false
+        }
+        else if (textField === contentField) {
+            doneButton.enabled = (titleField.text != "" && receiverField.text != "" && contentField.text != "")
+            return false
         }
         else {
             return true
         }
     }
     
+    @IBAction func criticalSwitched(sender: UISwitch) {
+        if (criticalSwitch.on) {
+            //unhide expiry date fields
+        } else {
+            //hide expiry date fields
+
+            // TODO: reset date
+        }
+    }
+    
+    
     // Post entry to API
     func sendForm()
     {
-        
         let form:[String:AnyObject] = [
-            "title": "My Title",
-            "coursesectionid": "3",
+            "title": titleField.text,
+            "coursesectionid": currentCourseId!,
             "expirydate": expTextField.text == "none" ? "9999-12-31 23:59:59.997" : msSqlDate!,
             "priority": criticalSwitch.on ? "Critical" : "Standard",
-            "content": "My Content",
+            "content": contentField.text,
         ]
         Alamofire.request(.POST, routePostNewsArticle!, parameters: form, encoding: .JSON)
         .responseJSON { (req, res, data, error) in
@@ -159,15 +228,15 @@ class NewArticleController: UIViewController, UITextFieldDelegate {
             
             //print response
             println(data)
-            
             if var statuscode = json["statuscode"].int
             {
                 if (statuscode == 200)
                 {
                     // Data successfully received
                     println("Reading data...")
-                    self.parsePostableContacts(json["data"]["usercoursesections"].arrayValue)
+                    self.parsePostableContacts(json["data"]["coursesections"].arrayValue)
                     println("Data read.")
+                    self.pickerToCat.reloadAllComponents()
                     return
                 }
                 else
@@ -185,12 +254,13 @@ class NewArticleController: UIViewController, UITextFieldDelegate {
     
     // Parse Postable Contacts from Get method
     private func parsePostableContacts (contactsArray:[JSON]) {
+        println("contactsArray count: \(contactsArray.count)")
         for contact in contactsArray {
             let newContact = PostableContact(
-                usercoursesectionid: contact["usercoursesectionid"].stringValue,
-                usercoursesectionname: contact["usercoursesectionname"].stringValue)
+                usercoursesectionid: contact["coursesectionid"].stringValue,
+                usercoursesectionname: contact["coursename"].stringValue)
             println(contact)
-            self.postableContacts!.append(newContact)
+            self.postableContacts.append(newContact)
         }
     }
     
