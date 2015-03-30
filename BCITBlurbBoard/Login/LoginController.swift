@@ -59,7 +59,7 @@ class LoginController: UIViewController {
                 let count = json["data"]["criticalnews"].array?.count;
                 
                 if(count > 0){
-                    var newsText:String = "**Important**\n";
+                    var newsText:String = "CRITICAL NEWS\n";
                     for(var i = 0; i < count; i++){
                         if let title = json["data"]["criticalnews"][i]["title"].string {
                             newsText += title + "\n";
