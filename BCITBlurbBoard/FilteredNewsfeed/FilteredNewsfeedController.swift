@@ -22,14 +22,18 @@ struct FilteredNewsItem
     var numComments : String
 }
 
+
 class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    var coursesectionID : String!
+
+    @IBOutlet weak var navBar: UINavigationBar!
     // outlets
     @IBOutlet weak var tableView: UITableView!
     
     // class variables
     var newsArray : [FilteredNewsItem] = []
-    let cellIdentifier : String = "newsCell"
+    let cellIdentifier : String = "filterednewsCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +51,10 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    let items: [[String]] = [
-        ["Woop woop!", "This is a summary of everything that might be in this post. How exciting!",
-            "Posted February 16, 2015", "D'Arcy Smith, Faculty of Computing", "12"],
-        ["Hubba Bubba: Old News or Retro Cool?", "Gum is making a comeback according to a crack team of researchers at BCIT's Burnaby, BC, Canada campus.","Posted February 16, 2015", "Matthew Banman, CST", "3"]]
+//    let items: [[String]] = [
+//        ["Woop woop!", "This is a summary of everything that might be in this post. How exciting!",
+//            "Posted February 16, 2015", "D'Arcy Smith, Faculty of Computing", "12"],
+//        ["Hubba Bubba: Old News or Retro Cool?", "Gum is making a comeback according to a crack team of researchers at BCIT's Burnaby, BC, Canada campus.","Posted February 16, 2015", "Matthew Banman, CST", "3"]]
     
     // returns the number of items to display!
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int ) -> Int
@@ -102,7 +106,8 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
         let appData : GlobalAppData! = GlobalAppData.getGlobalAppData()
         let uid = appData.getUserId()
         let token = appData.getUserToken()
-        let route : String = "http://api.thunderchicken.ca/api/newsfeed/" + uid! + "/standard/" + token!
+        ///api/newsfeed/:userid/coursesection/:coursesectionid/:token
+        let route : String = "http://api.thunderchicken.ca/api/newsfeed/" + uid! + "/coursesection/" + coursesectionID! + "/" + token!
         
         Alamofire.request(.GET, route)
             .responseJSON{ (_, _, data, _) in
@@ -117,8 +122,11 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
                 {
                     if (statuscode == 200)
                     {
-                        //proceed news items!
+                        //process news items!
+                        let title = String(json["data"]["coursename"].stringValue) + " News";
+                        self.navBar.topItem?.title = title;
                         self.displayNewsItems(json["data"]["news"].arrayValue)
+
                         self.tableView.reloadData()
                     }
                     else
@@ -154,29 +162,8 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
             self.newsArray.append(ni)
             count++
         }
-        
     }
-    
-    // end TableView stuff
-
-    @IBAction func btnLogoutPressed(sender: UIButton)
-    {
-        // Do logout things 
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil);
+    @IBAction func backButtonClicked(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
-    @IBAction func btnContactsPressed(sender: UIButton)
-    {
-        var storyboard = UIStoryboard(name : "ContactsStoryboard", bundle: nil);
-        var controller = storyboard.instantiateViewControllerWithIdentifier("contacts") as UIViewController;
-        let dstController = controller as ContactsController;
-        self.presentViewController(controller, animated: true, completion: nil);
-    }
-    @IBAction func btnMyCoursesPressed(sender: UIButton) {
-        var storyboard = UIStoryboard(name : "MyCoursesStoryboard", bundle: nil);
-        var controller = storyboard.instantiateViewControllerWithIdentifier("mycourses") as UIViewController;
-        let dstController = controller as MyCoursesController;
-        self.presentViewController(controller, animated: true, completion: nil);
-    }
-    
-    
 }

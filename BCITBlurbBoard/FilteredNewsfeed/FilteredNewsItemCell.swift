@@ -9,13 +9,12 @@
 import UIKit
 
 class FilteredNewsItemCell: UITableViewCell {
-
-    @IBOutlet weak var CellTitle: UILabel!
-    @IBOutlet weak var MessagePreview: UILabel!
-    @IBOutlet weak var Author: UILabel!
-    @IBOutlet weak var CommentNum: UILabel!
-    @IBOutlet weak var Date: UILabel!
     
+    @IBOutlet weak var MessagePreview: UILabel!
+    @IBOutlet weak var Date: UILabel!
+    @IBOutlet weak var CommentNum: UILabel!
+    @IBOutlet weak var Author: UILabel!
+    @IBOutlet weak var CellTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
