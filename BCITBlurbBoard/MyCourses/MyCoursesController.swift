@@ -68,7 +68,7 @@ class MyCoursesController : UIViewController, UITableViewDataSource, UITableView
     // returns the height of a single cell
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 100
+        return 80
     }
     
     // building a table cell
@@ -163,6 +163,10 @@ class MyCoursesController : UIViewController, UITableViewDataSource, UITableView
             }
         }
         
+    }
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
     }
 
 }
