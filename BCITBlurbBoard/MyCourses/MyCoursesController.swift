@@ -90,7 +90,7 @@ class MyCoursesController : UIViewController, UITableViewDataSource, UITableView
         var storyboard = UIStoryboard(name : "FilteredNewsfeedStoryboard", bundle: nil);
         var controller = storyboard.instantiateViewControllerWithIdentifier("filterednewsfeed") as UIViewController;
         let dstController = controller as FilteredNewsfeedController;
-        dstController.coursesectionID = courseArray[indexPath.row].courseid
+        dstController.coursesectionID = courseArray[indexPath.row].coursesectionid
         self.presentViewController(controller, animated: true, completion: nil);
     }
     
