@@ -15,6 +15,11 @@
 		10FE8BCA1A5E13E900F8CCDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FE8BC91A5E13E900F8CCDB /* Images.xcassets */; };
 		10FE8BCD1A5E13E900F8CCDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10FE8BCB1A5E13E900F8CCDB /* LaunchScreen.xib */; };
 		10FE8BD91A5E13E900F8CCDB /* BCITBlurbBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */; };
+		3B9786B61ACA0F1E00F72BDC /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9786B11ACA0F1E00F72BDC /* DateUtils.swift */; };
+		3B9786B71ACA0F1E00F72BDC /* PopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9786B21ACA0F1E00F72BDC /* PopDatePicker.swift */; };
+		3B9786B81ACA0F1E00F72BDC /* PopDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9786B31ACA0F1E00F72BDC /* PopDatePickerViewController.swift */; };
+		3B9786B91ACA0F1E00F72BDC /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9786B41ACA0F1E00F72BDC /* PopDateViewController.xib */; };
+		3B9786BA1ACA0F1E00F72BDC /* PriorityPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9786B51ACA0F1E00F72BDC /* PriorityPicker.xib */; };
 		C9513A801A8BCF7A00D5C1F8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9513A7F1A8BCF7A00D5C1F8 /* HTTPClient.swift */; };
 		C9B083FE1AB22B69007AEA3F /* NewsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B083FD1AB22B69007AEA3F /* NewsItemCell.swift */; };
 		C9E154511A8C3C68005EDEC7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1544E1A8C3BE9005EDEC7 /* Alamofire.framework */; };
@@ -103,6 +108,11 @@
 		10FE8BD21A5E13E900F8CCDB /* BCITBlurbBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCITBlurbBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FE8BD71A5E13E900F8CCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FE8BD81A5E13E900F8CCDB /* BCITBlurbBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCITBlurbBoardTests.swift; sourceTree = "<group>"; };
+		3B9786B11ACA0F1E00F72BDC /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = Newsfeed/DateUtils.swift; sourceTree = "<group>"; };
+		3B9786B21ACA0F1E00F72BDC /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopDatePicker.swift; path = Newsfeed/PopDatePicker.swift; sourceTree = "<group>"; };
+		3B9786B31ACA0F1E00F72BDC /* PopDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopDatePickerViewController.swift; path = Newsfeed/PopDatePickerViewController.swift; sourceTree = "<group>"; };
+		3B9786B41ACA0F1E00F72BDC /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopDateViewController.xib; path = Newsfeed/PopDateViewController.xib; sourceTree = "<group>"; };
+		3B9786B51ACA0F1E00F72BDC /* PriorityPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PriorityPicker.xib; path = Newsfeed/PriorityPicker.xib; sourceTree = "<group>"; };
 		C9513A7F1A8BCF7A00D5C1F8 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		C9B083FD1AB22B69007AEA3F /* NewsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsItemCell.swift; path = Newsfeed/NewsItemCell.swift; sourceTree = "<group>"; };
 		C9E154481A8C3BE9005EDEC7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
@@ -244,6 +254,11 @@
 		E72E36611A83266100CCBE1D /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
+				3B9786B11ACA0F1E00F72BDC /* DateUtils.swift */,
+				3B9786B21ACA0F1E00F72BDC /* PopDatePicker.swift */,
+				3B9786B31ACA0F1E00F72BDC /* PopDatePickerViewController.swift */,
+				3B9786B41ACA0F1E00F72BDC /* PopDateViewController.xib */,
+				3B9786B51ACA0F1E00F72BDC /* PriorityPicker.xib */,
 				E72E36621A83268C00CCBE1D /* NewsfeedController.swift */,
 				E72E36641A83270600CCBE1D /* NewsfeedStoryboard.storyboard */,
 				E72E366B1A832CC300CCBE1D /* NewArticleController.swift */,
@@ -433,7 +448,9 @@
 				C9EB8FC01AC2070F004CCE40 /* MyCoursesStoryboard.storyboard in Resources */,
 				E7E4E5041A83348600D97C90 /* SingleContactStoryboard.storyboard in Resources */,
 				E72E36681A832B8000CCBE1D /* ContactsStoryboard.storyboard in Resources */,
+				3B9786BA1ACA0F1E00F72BDC /* PriorityPicker.xib in Resources */,
 				10FE8BC81A5E13E900F8CCDB /* Main.storyboard in Resources */,
+				3B9786B91ACA0F1E00F72BDC /* PopDateViewController.xib in Resources */,
 				E72E36711A832FCE00CCBE1D /* SingleArticleStoryboard.storyboard in Resources */,
 				10FE8BCD1A5E13E900F8CCDB /* LaunchScreen.xib in Resources */,
 				E72E36651A83270600CCBE1D /* NewsfeedStoryboard.storyboard in Resources */,
@@ -456,10 +473,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9786B81ACA0F1E00F72BDC /* PopDatePickerViewController.swift in Sources */,
 				E73DFB3F1A7F488A00B8041D /* CommentProtocol.swift in Sources */,
+				3B9786B61ACA0F1E00F72BDC /* DateUtils.swift in Sources */,
 				E7169F991AB14F3B00479330 /* SingleArticleController.swift in Sources */,
 				10FE8BC31A5E13E900F8CCDB /* BCITBlurbBoard.xcdatamodeld in Sources */,
 				E77F7D671AB125570058F680 /* SingleArticleCellControllerTableViewCell.swift in Sources */,
+				3B9786B71ACA0F1E00F72BDC /* PopDatePicker.swift in Sources */,
 				C9513A801A8BCF7A00D5C1F8 /* HTTPClient.swift in Sources */,
 				E7924B5B1A7F5C2900A8C5B3 /* LoginProtocol.swift in Sources */,
 				E74AD7411AB8C9A00082A5A8 /* FilteredNewsfeedController.swift in Sources */,
