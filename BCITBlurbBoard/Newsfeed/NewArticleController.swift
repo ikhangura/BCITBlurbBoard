@@ -176,7 +176,7 @@ class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewD
             
             // Change TO to ALL
             receiverField.text = "Everyone"
-            currentCourseId = "10"
+            currentCourseId = getCourseIdForAll()
             
             // Disable TO Edit
             receiverField.enabled = false
@@ -292,6 +292,16 @@ class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewD
             println(contact)
             self.postableContacts.append(newContact)
         }
+    }
+    
+    func getCourseIdForAll() -> String {
+        for contact in postableContacts {
+            println(contact.usercoursesectionname)
+            if (contact.usercoursesectionname == "Everyone") {
+                return contact.usercoursesectionid
+            }
+        }
+        return "0"
     }
     
     // Navigation buttons
