@@ -38,6 +38,8 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.newsArray = Array()
         
+        configureTableView()
+        
         // get news via Alamofire API call
         getNews()
     }
@@ -67,7 +69,7 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     // returns the height of a single cell
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 160
+        return 135
     }
     
     // building a table cell
@@ -157,26 +159,29 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 105.0
+    }
+    
     // end TableView stuff
 
-    @IBAction func btnLogoutPressed(sender: UIButton)
-    {
-        // Do logout things 
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil);
+    @IBAction func btnLogoutPressed(sender: AnyObject) {
+        //logout
     }
-    @IBAction func btnContactsPressed(sender: UIButton)
-    {
+    
+    @IBAction func btnContactPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name : "ContactsStoryboard", bundle: nil);
         var controller = storyboard.instantiateViewControllerWithIdentifier("contacts") as UIViewController;
         let dstController = controller as ContactsController;
         self.presentViewController(controller, animated: true, completion: nil);
     }
-    @IBAction func btnMyCoursesPressed(sender: UIButton) {
+    
+    @IBAction func btnCoursesPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name : "MyCoursesStoryboard", bundle: nil);
         var controller = storyboard.instantiateViewControllerWithIdentifier("mycourses") as UIViewController;
         let dstController = controller as MyCoursesController;
         self.presentViewController(controller, animated: true, completion: nil);
     }
-    
     
 }

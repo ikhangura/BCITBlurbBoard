@@ -120,6 +120,17 @@ class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewD
         //pickerToCat.hidden = true
     }
     
+    
+    @IBAction func titleChanged(sender: UITextField) {
+        checkMaxLength(titleField, maxLength: 30)
+    }
+    
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if (countElements(textField.text!) > maxLength) {
+            textField.deleteBackward()
+        }
+    }
+    
     // User selects the a text field
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
