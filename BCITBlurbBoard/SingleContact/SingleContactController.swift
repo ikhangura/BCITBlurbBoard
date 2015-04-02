@@ -8,7 +8,8 @@
 
 import UIKit
 import Alamofire
-class SingleContactController : UIViewController
+import MessageUI
+class SingleContactController : UIViewController,MFMailComposeViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate
 {
     
 
@@ -29,11 +30,12 @@ class SingleContactController : UIViewController
         var dept : String;
         
     }
-
+ private var contactDetails : ContactsDetails?;
+    
     @IBOutlet var lblEmail: UILabel!
 let appData = GlobalAppData.getGlobalAppData()
 @IBOutlet var lblTest: UILabel!
- private var contactDetails : ContactsDetails?;
+
 var lblContactId = String();
 
     
@@ -55,6 +57,49 @@ var lblContactId = String();
     @IBOutlet var lblPhone: UILabel!
     
     @IBOutlet var lblLocation: UILabel!
+   
+    
+
+    @IBAction func btnEmail(sender: UIButton) {
+        //UIApplication.sharedApplication().openURL(NSURL(strin//g:"http://www.facebook.com")!)
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        var subject = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        var body = UITextView(frame: CGRectMake(0, 0, 500, 21))
+        
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.view.addSubview(subject)
+        mailComposerVC.view.addSubview(body)
+        mailComposerVC.setToRecipients([lblEmail.text!])
+        mailComposerVC.setSubject(subject.text)
+        mailComposerVC.setMessageBody(body.text, isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func btnCall(sender: UIButton) {
+      UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + lblPhone.text!)!)
+        println(lblPhone.text)
+     }
+    
 override func viewDidLoad() {
         super.viewDidLoad()
          let token:String! = appData.getUserToken();
