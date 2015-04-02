@@ -139,6 +139,10 @@ class MyCoursesController : UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    @IBAction func btnBackCoursesPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
     func displayCourseItems(json : [JSON])
     {
         var count = 0
@@ -163,10 +167,6 @@ class MyCoursesController : UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-    }
-    
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil);
     }
 
 }

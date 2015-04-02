@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamoFire
+import Darwin
 
 class LoginController: UIViewController {
     
@@ -27,8 +28,6 @@ class LoginController: UIViewController {
         error.adjustsFontSizeToFitWidth = true;
         errorMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(0, errorMessage.length));
         self.getCriticalNews();
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +46,7 @@ class LoginController: UIViewController {
         password.resignFirstResponder();
     }
     
-    private func getCriticalNews(){
+    private func getCriticalNews() {
         println("Login - Calling Critical News");
         let route = baseUrl + "/newsfeed/critical";
         
@@ -55,26 +54,39 @@ class LoginController: UIViewController {
         Alamofire.request(.GET, route)
             .responseJSON{ (_, _, data, _) in
                 println("Login - Critical News Recieved");
-                let json = JSON(data!);
-                let count = json["data"]["criticalnews"].array?.count;
-                
-                if(count > 0){
-                    var newsText:String = "CRITICAL NEWS\n";
-                    for(var i = 0; i < count; i++){
-                        if let title = json["data"]["criticalnews"][i]["title"].string {
-                            newsText += title + "\n";
-                        }
-                    }
-                    self.criticalnewslabel.text = newsText;
-                    self.fadeInBanner();
-
+                if (data == nil) {
+                    self.alertNoConnection()
                 }
-                
-                
-                
-                
+                else {
+                    let json = JSON(data!);
+                    let count = json["data"]["criticalnews"].array?.count;
+                    
+                    if(count > 0){
+                        var newsText:String = "CRITICAL NEWS\n";
+                        for(var i = 0; i < count; i++){
+                            if let title = json["data"]["criticalnews"][i]["title"].string {
+                                newsText += title + "\n";
+                            }
+                        }
+                        self.criticalnewslabel.text = newsText;
+                        self.fadeInBanner();
+                    }
+                }
             }
-        
+    }
+    
+    private func alertNoConnection() {
+        let alertController = UIAlertController(title: "Error!", message:
+            "Can't connect to server. Please check if you have internet connection.", preferredStyle: UIAlertControllerStyle.Alert)
+        var exitAction = UIAlertAction(title: "Exit", style: UIAlertActionStyle.Default) {
+            UIAlertAction in self.exitApp()
+        }
+        alertController.addAction(exitAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func exitApp() {
+        exit(0)
     }
     
     private func fadeInBanner(){
@@ -99,6 +111,21 @@ class LoginController: UIViewController {
             error.text = self.errorMessage.string;
             
             loader.stopAnimating();
+            password.text = ""
+            
+            UIView.animateWithDuration(1.0, delay: 2.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                self.error.alpha = 0.0
+                }, completion: {
+                    (finished: Bool) -> Void in
+                    
+                    //Once the label is completely invisible, set the text and fade it back in
+                    self.error.text = ""
+                    
+                    // Fade in
+                    UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                        self.error.alpha = 1.0
+                        }, completion: nil)
+            })
             return;
         }
         let validEmail = username.text!;
