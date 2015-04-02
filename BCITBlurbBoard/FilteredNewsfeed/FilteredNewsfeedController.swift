@@ -71,7 +71,7 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
     // returns the height of a single cell
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 160
+        return 135
     }
     
     // building a table cell
@@ -163,7 +163,8 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
             count++
         }
     }
-    @IBAction func backButtonClicked(sender: UIButton) {
+    
+    @IBAction func btnBackPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
 }
