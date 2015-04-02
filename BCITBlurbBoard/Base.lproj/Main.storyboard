@@ -111,14 +111,11 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eiy-gu-OqO">
                                 <rect key="frame" x="293" y="327" width="20" height="20"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-f9-24U">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-f9-24U">
                                 <rect key="frame" x="217" y="364" width="173" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.90196078430000004" green="0.4941176471" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="114" y="428" width="173" height="25"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -128,6 +125,9 @@
                             </constraint>
                             <constraint firstItem="l5Y-12-2kH" firstAttribute="top" secondItem="Jp9-QE-IvD" secondAttribute="bottom" constant="34" id="3cl-uc-fPs"/>
                             <constraint firstAttribute="centerX" secondItem="l5Y-12-2kH" secondAttribute="centerX" constant="-0.5" id="4kf-im-aFL"/>
+                            <constraint firstItem="zJe-f9-24U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="98" id="5av-As-qge">
+                                <variation key="widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="HcS-ZC-Etp" secondAttribute="trailing" constant="-16" id="E8z-Nh-M0h"/>
                             <constraint firstItem="sNk-zJ-uNs" firstAttribute="top" secondItem="l5Y-12-2kH" secondAttribute="bottom" constant="8" id="E9O-Vb-pef"/>
                             <constraint firstItem="HcS-ZC-Etp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LJ0-HV-3EB"/>
@@ -136,6 +136,9 @@
                             <constraint firstItem="sNk-zJ-uNs" firstAttribute="width" secondItem="l5Y-12-2kH" secondAttribute="width" id="Q4K-75-maV"/>
                             <constraint firstAttribute="centerX" secondItem="Jp9-QE-IvD" secondAttribute="centerX" id="Uv2-Gl-KAK"/>
                             <constraint firstAttribute="centerX" secondItem="PFb-Zw-xUM" secondAttribute="centerX" constant="-0.5" id="ZJQ-lB-1K4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zJe-f9-24U" secondAttribute="trailing" constant="97" id="b87-k7-bjI">
+                                <variation key="widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="sNk-zJ-uNs" secondAttribute="centerX" constant="-0.5" id="dBx-xs-HlE"/>
                             <constraint firstItem="PFb-Zw-xUM" firstAttribute="width" secondItem="sNk-zJ-uNs" secondAttribute="width" id="euJ-C5-u7Z"/>
                             <constraint firstAttribute="centerX" secondItem="zJe-f9-24U" secondAttribute="centerX" constant="-0.5" id="fJx-NM-IIb"/>
@@ -167,6 +170,8 @@
                                 <exclude reference="euJ-C5-u7Z"/>
                                 <exclude reference="hNQ-sN-rez"/>
                                 <exclude reference="zJA-F6-hgo"/>
+                                <exclude reference="5av-As-qge"/>
+                                <exclude reference="b87-k7-bjI"/>
                                 <exclude reference="fJx-NM-IIb"/>
                                 <exclude reference="vd3-ej-Ezp"/>
                             </mask>
@@ -193,7 +198,9 @@
                                 <include reference="euJ-C5-u7Z"/>
                                 <include reference="hNQ-sN-rez"/>
                                 <include reference="zJA-F6-hgo"/>
-                                <include reference="fJx-NM-IIb"/>
+                                <include reference="5av-As-qge"/>
+                                <include reference="b87-k7-bjI"/>
+                                <exclude reference="fJx-NM-IIb"/>
                                 <include reference="vd3-ej-Ezp"/>
                             </mask>
                         </variation>

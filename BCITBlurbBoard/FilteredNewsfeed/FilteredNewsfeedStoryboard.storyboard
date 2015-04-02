@@ -10,7 +10,7 @@
         <!--Filtered Newsfeed Controller-->
         <scene sceneID="yZm-eB-wEi">
             <objects>
-                <viewController storyboardIdentifier="filterednewsfeed" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wl3-12-PEa" customClass="FilteredNewsfeedController" customModule="BCITBlurbBoard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="filterednewsfeed" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wl3-12-PEa" customClass="FilteredNewsfeedController" customModule="BCITBlurbBoard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="alK-39-GQe"/>
                         <viewControllerLayoutGuide type="bottom" id="NPt-vQ-IoS"/>
@@ -26,7 +26,7 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="vkp-WY-Xfp">
                                             <color key="tintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="btnBackPressed:" destination="Wl3-12-PEa" id="7Wr-hy-XYq"/>
+                                                <action selector="btnBackPressed:" destination="Wl3-12-PEa" id="zWf-29-gpT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

@@ -167,4 +167,5 @@ class FilteredNewsfeedController: UIViewController, UITableViewDataSource, UITab
     @IBAction func btnBackPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
+    
 }
