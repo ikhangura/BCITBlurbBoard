@@ -68,4 +68,12 @@ public class GlobalAppData{
     public func getUserName()->String?{
         return self.username;
     }
+    
+    public func clearGlobalAppData(){
+        self.username = nil;
+        self.userid = nil;
+        self.usertype = nil;
+        self.token = nil;
+        println("GlobalAppData - All content has been cleared and set to nil");
+    }
 }
