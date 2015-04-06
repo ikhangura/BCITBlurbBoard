@@ -19,3 +19,15 @@ To get the user type call:
 ````swift
 let usertype:String = appData.getUserType();
 ````
+To get the username call:
+````swift
+let username:String = appData.getUserName();
+````
+To get userid call:
+````swift
+let userid:String = appData.getUserId();
+````
+To clear all data and reset values to nil call:
+````swift
+appData.clearGlobalAppData();
+````

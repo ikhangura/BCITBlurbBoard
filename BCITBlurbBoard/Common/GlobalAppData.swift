@@ -53,19 +53,40 @@ public class GlobalAppData{
         self.usertype = usertype;
     }
     
+    /// Sets the user's id
+    /// :param: userid the id of the user being set
     public func setUserId(userid:String){
         self.userid = userid;
     }
     
+    /// Gets the user;s id
+    //// :return: String? the userid that has been set. Will return nil if
+    /// a usertype has not been set
     public func getUserId()->String?{
         return self.userid;
     }
     
+    /// Sets the user's name
+    /// :param: the name of the user being set
     public func setUserName(username:String){
         self.username = username;
     }
     
+    /// Gets the user's name
+    /// :return: String? the username that has been set. Will return nil if
+    /// a username has not been set
     public func getUserName()->String?{
         return self.username;
+    }
+    
+    /// Resets all attribues in the GlobalAppData to nil and outputs a
+    /// notification to the console for dev purposes. Clearing the GlobalAppData
+    /// is intended to function as a logout funcitonality
+    public func clearGlobalAppData(){
+        self.username = nil;
+        self.userid = nil;
+        self.usertype = nil;
+        self.token = nil;
+        println("GlobalAppData - All content has been cleared and set to nil");
     }
 }
