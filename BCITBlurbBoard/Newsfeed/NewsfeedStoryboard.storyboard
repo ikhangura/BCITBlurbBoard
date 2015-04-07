@@ -67,12 +67,18 @@
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="8" width="564" height="31"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Message Preview Text" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba0-Ka-hmh" userLabel="MessagePreview">
                                                     <rect key="frame" x="8" y="40" width="524" height="58"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="40" width="564" height="16.5"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="News Item Author" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWM-c4-T8T" userLabel="Author">
                                                     <rect key="frame" x="8" y="130" width="295" height="21"/>
@@ -98,6 +104,9 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" red="0.18431372549019609" green="0.70588235294117652" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="481" y="78" width="101" height="19"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -219,16 +228,17 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDt-7U-adq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem id="6KQ-Nj-DWH">
                                         <barButtonItem key="leftBarButtonItem" title="Courses" id="LoB-NL-7Lk">
-                                            <color key="tintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="btnCoursesPressed:" destination="Wl3-12-PEa" id="hVH-YE-UR0"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Contacts" id="ghu-DV-YEP">
-                                            <color key="tintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="btnContactPressed:" destination="Wl3-12-PEa" id="E8d-Ot-0pH"/>
                                             </connections>
@@ -264,17 +274,17 @@
                                 <exclude reference="nDt-7U-adq"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="K1P-cm-3ps"/>
-                                <exclude reference="KT1-Cw-zzL"/>
-                                <exclude reference="bcL-ee-bQF"/>
-                                <exclude reference="FNJ-cc-TbT"/>
-                                <exclude reference="gNu-qW-7Cc"/>
-                                <exclude reference="mZG-xe-uzo"/>
                                 <exclude reference="Dr9-OE-5Wt"/>
                                 <exclude reference="Oyy-fG-rlb"/>
                                 <exclude reference="RgW-6K-ij3"/>
                                 <exclude reference="ogp-jk-wxf"/>
+                                <exclude reference="FNJ-cc-TbT"/>
                                 <exclude reference="6Yl-yG-h8D"/>
+                                <exclude reference="K1P-cm-3ps"/>
+                                <exclude reference="KT1-Cw-zzL"/>
+                                <exclude reference="bcL-ee-bQF"/>
+                                <exclude reference="gNu-qW-7Cc"/>
+                                <exclude reference="mZG-xe-uzo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -282,17 +292,17 @@
                                 <include reference="nDt-7U-adq"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="K1P-cm-3ps"/>
-                                <include reference="KT1-Cw-zzL"/>
-                                <include reference="bcL-ee-bQF"/>
-                                <include reference="FNJ-cc-TbT"/>
-                                <include reference="gNu-qW-7Cc"/>
-                                <include reference="mZG-xe-uzo"/>
                                 <include reference="Dr9-OE-5Wt"/>
                                 <include reference="Oyy-fG-rlb"/>
                                 <include reference="RgW-6K-ij3"/>
                                 <include reference="ogp-jk-wxf"/>
+                                <include reference="FNJ-cc-TbT"/>
                                 <include reference="6Yl-yG-h8D"/>
+                                <include reference="K1P-cm-3ps"/>
+                                <include reference="KT1-Cw-zzL"/>
+                                <include reference="bcL-ee-bQF"/>
+                                <include reference="gNu-qW-7Cc"/>
+                                <include reference="mZG-xe-uzo"/>
                             </mask>
                         </variation>
                     </view>

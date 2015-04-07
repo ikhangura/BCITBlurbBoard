@@ -67,6 +67,11 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
         routeNewCommentForArticle = baseUrl! + "/newsfeed/" + userID! + "/article/" + articleID + "/comment/" + userToken!;
         loadData();
         txtReply.delegate = self;
+        
+        
+        txtReply.layer.borderColor = UIColor.grayColor().CGColor
+        txtReply.layer.borderWidth = 0.2
+        txtReply.layer.cornerRadius = 5.0
     }
     
     
@@ -211,9 +216,10 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
                 }
         }
     }
-    @IBAction func btnBackPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil);    }
     
+    @IBAction func btnBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
         if(replacementText == "\n") {
             textView.resignFirstResponder()
