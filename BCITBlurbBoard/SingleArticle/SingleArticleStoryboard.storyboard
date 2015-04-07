@@ -239,7 +239,7 @@
                                     <constraint firstItem="CMc-fA-fXk" firstAttribute="top" secondItem="Xfb-2R-i1R" secondAttribute="bottom" constant="8.5" id="PSa-IX-CGl"/>
                                     <constraint firstAttribute="trailing" secondItem="CMc-fA-fXk" secondAttribute="trailing" constant="16" id="PlD-eS-obt"/>
                                     <constraint firstItem="jDa-ym-euc" firstAttribute="top" secondItem="CMc-fA-fXk" secondAttribute="bottom" constant="-36" id="WU2-Mb-LA2">
-                                        <variation key="widthClass=compact" constant="10"/>
+                                        <variation key="widthClass=compact" constant="5"/>
                                     </constraint>
                                     <constraint firstItem="jDa-ym-euc" firstAttribute="leading" secondItem="9da-Ry-ZDd" secondAttribute="leading" constant="43" id="g5Y-1v-vVn">
                                         <variation key="widthClass=compact" constant="10"/>
@@ -249,7 +249,7 @@
                                     </constraint>
                                     <constraint firstItem="CMc-fA-fXk" firstAttribute="leading" secondItem="9da-Ry-ZDd" secondAttribute="leading" constant="16" id="vBJ-Xa-BP3"/>
                                     <constraint firstItem="OIy-CU-wVt" firstAttribute="top" secondItem="CMc-fA-fXk" secondAttribute="bottom" constant="-51" id="zAa-BC-cLc">
-                                        <variation key="widthClass=compact" constant="10"/>
+                                        <variation key="widthClass=compact" constant="5"/>
                                     </constraint>
                                 </constraints>
                                 <variation key="default">
