@@ -30,6 +30,7 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     // class variables
     var newsArray : [NewsItem] = []
     let cellIdentifier : String = "newsCell"
+    var refreshControl:UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,17 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // get news via Alamofire API call
         getNews()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        getNews()
+        self.refreshControl.endRefreshing()
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,6 +151,8 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     func displayNewsItems(json : [JSON])
     {
         var count = 0
+        
+        newsArray.removeAll(keepCapacity: false)
         
         for j in json
         {
