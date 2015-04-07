@@ -29,6 +29,10 @@ class LoginController: UIViewController {
         errorMessage.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(0, errorMessage.length));
         self.getCriticalNews();
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.getCriticalNews();
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

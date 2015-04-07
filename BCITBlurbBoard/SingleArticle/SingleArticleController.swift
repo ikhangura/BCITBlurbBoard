@@ -215,6 +215,20 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
                         // Data successfully received
                         self.txtReply.text.removeAll(keepCapacity: false);
                         self.lblPostStatus.text = "Your comment has been posted";
+                        UIView.animateWithDuration(1.0, delay: 2.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                            self.lblPostStatus.alpha = 0.0
+                            }, completion: {
+                                (finished: Bool) -> Void in
+                                
+                                //Once the label is completely invisible, set the text and fade it back in
+                                self.lblPostStatus.text = ""
+                                
+                                // Fade in
+                                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                                    self.lblPostStatus.alpha = 1.0
+                                    }, completion: nil)
+                        })
+                        self.loadData()
                         return;
                     }
                     else
