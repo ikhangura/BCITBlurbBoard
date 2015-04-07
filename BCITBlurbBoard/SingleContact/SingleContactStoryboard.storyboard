@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Single Contact Controller-->
@@ -16,13 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gH-JQ-Lue">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="245-Mb-EtD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Contact Details" id="7HJ-xO-tPF">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="DmG-Hy-tld">
+                                            <color key="tintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="backBtn:" destination="2Hb-Np-GRp" id="9ul-qE-xnP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gH-JQ-Lue">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.13725490196078433" green="0.52549019607843139" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="44" width="213" height="43"/>
+                                    <rect key="frame" x="30" y="70" width="354" height="43"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblLoc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-OL-wsU">
@@ -31,7 +45,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="340" width="330" height="32"/>
+                                    <rect key="frame" x="30" y="342" width="354" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-PL-eVs">
@@ -49,7 +63,7 @@
                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="101" width="329" height="38"/>
+                                    <rect key="frame" x="30" y="127" width="354" height="38"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIp-S6-rUa">
@@ -58,7 +72,7 @@
                                 <color key="textColor" red="0.13725490200000001" green="0.52549019610000003" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="315" width="80" height="30"/>
+                                    <rect key="frame" x="28" y="317" width="80" height="30"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="monHr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLN-Rd-E95">
@@ -67,7 +81,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="157" y="421" width="184" height="32"/>
+                                    <rect key="frame" x="157" y="421" width="227" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="department" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDL-0A-KiV">
@@ -76,7 +90,7 @@
                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="77" width="330" height="32"/>
+                                    <rect key="frame" x="30" y="103" width="354" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYC-YJ-3RV">
@@ -94,7 +108,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="157" y="508" width="184" height="32"/>
+                                    <rect key="frame" x="157" y="508" width="227" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Z2-4W-0db">
@@ -112,7 +126,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="158" y="540" width="184" height="32"/>
+                                    <rect key="frame" x="158" y="540" width="226" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGd-jM-m6F">
@@ -139,7 +153,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="157" y="477" width="184" height="32"/>
+                                    <rect key="frame" x="157" y="477" width="227" height="32"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPv-Re-aRf">
@@ -151,28 +165,13 @@
                                     <rect key="frame" x="32" y="477" width="98" height="31"/>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="245-Mb-EtD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Contact Details" id="7HJ-xO-tPF">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="DmG-Hy-tld">
-                                            <connections>
-                                                <action selector="backBtn:" destination="2Hb-Np-GRp" id="9ul-qE-xnP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-4" y="1" width="400" height="44"/>
-                                </variation>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tueHr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9A0-GE-mBu">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="156" y="448" width="184" height="32"/>
+                                    <rect key="frame" x="156" y="448" width="228" height="32"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mA-nd-gn3">
@@ -182,7 +181,7 @@
                                     <color key="titleColor" red="0.13725490200000001" green="0.52549019610000003" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="235" width="44" height="30"/>
+                                    <rect key="frame" x="28" y="246" width="44" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="btnCall:" destination="2Hb-Np-GRp" eventType="touchUpInside" id="Tds-QC-1Li"/>
@@ -196,7 +195,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="143" width="46" height="36.5"/>
+                                    <rect key="frame" x="30" y="169" width="46" height="36.5"/>
                                 </variation>
                                 <connections>
                                     <action selector="btnEmail:" destination="2Hb-Np-GRp" eventType="touchUpInside" id="ee5-5K-cM0"/>
@@ -208,7 +207,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="30" y="168" width="331" height="38"/>
+                                    <rect key="frame" x="30" y="194" width="354" height="38"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblWork" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBf-kh-DIJ">
@@ -217,13 +216,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="31" y="264" width="204" height="32"/>
+                                    <rect key="frame" x="31" y="275" width="204" height="32"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="245-Mb-EtD" secondAttribute="trailing" constant="-12" id="Bms-we-QWq">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
+                            <constraint firstItem="245-Mb-EtD" firstAttribute="leading" secondItem="6TU-Hv-Bs4" secondAttribute="leadingMargin" constant="-20" id="hy4-59-qcE">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
+                            <constraint firstItem="245-Mb-EtD" firstAttribute="top" secondItem="0nM-XU-AyJ" secondAttribute="bottom" constant="-19" id="xZE-dm-WAs">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="245-Mb-EtD"/>
                                 <exclude reference="3gH-JQ-Lue"/>
                                 <exclude reference="lp0-OL-wsU"/>
                                 <exclude reference="dxi-PL-eVs"/>
@@ -239,16 +250,21 @@
                                 <exclude reference="hzp-uM-qNr"/>
                                 <exclude reference="hPN-3O-3b0"/>
                                 <exclude reference="sPv-Re-aRf"/>
-                                <exclude reference="245-Mb-EtD"/>
                                 <exclude reference="9A0-GE-mBu"/>
                                 <exclude reference="8mA-nd-gn3"/>
                                 <exclude reference="FSQ-86-0sG"/>
                                 <exclude reference="7DW-pn-oEZ"/>
                                 <exclude reference="gBf-kh-DIJ"/>
                             </mask>
+                            <mask key="constraints">
+                                <exclude reference="Bms-we-QWq"/>
+                                <exclude reference="hy4-59-qcE"/>
+                                <exclude reference="xZE-dm-WAs"/>
+                            </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="245-Mb-EtD"/>
                                 <include reference="3gH-JQ-Lue"/>
                                 <include reference="lp0-OL-wsU"/>
                                 <include reference="dxi-PL-eVs"/>
@@ -264,12 +280,16 @@
                                 <include reference="hzp-uM-qNr"/>
                                 <include reference="hPN-3O-3b0"/>
                                 <include reference="sPv-Re-aRf"/>
-                                <include reference="245-Mb-EtD"/>
                                 <include reference="9A0-GE-mBu"/>
                                 <include reference="8mA-nd-gn3"/>
                                 <include reference="FSQ-86-0sG"/>
                                 <include reference="7DW-pn-oEZ"/>
                                 <include reference="gBf-kh-DIJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Bms-we-QWq"/>
+                                <include reference="hy4-59-qcE"/>
+                                <include reference="xZE-dm-WAs"/>
                             </mask>
                         </variation>
                     </view>

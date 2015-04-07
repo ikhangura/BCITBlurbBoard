@@ -50,6 +50,10 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.addSubview(refreshControl)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        getNews()
+    }
+    
     func refresh(sender:AnyObject)
     {
         getNews()
