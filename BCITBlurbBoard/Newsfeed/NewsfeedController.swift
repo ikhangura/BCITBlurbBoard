@@ -181,16 +181,16 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     // end TableView stuff
     
     @IBAction func btnLogoutPressed(sender: AnyObject) {
-//        let appData = GlobalAppData.getGlobalAppData();
-//        appData.setUserToken("");
-//        appData.setUserType("");
-//        appData.setUserId("");
-//        appData.setUserName("");
-//        
-//        var storyboard = UIStoryboard(name : "Main", bundle: nil);
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("main") as UIViewController;
-//        let dstController = controller as LoginController;
-//        self.presentViewController(controller, animated: true, completion: nil)
+        let appData = GlobalAppData.getGlobalAppData();
+        appData.setUserToken("");
+        appData.setUserType("");
+        appData.setUserId("");
+        appData.setUserName("");
+        
+        var storyboard = UIStoryboard(name : "Main", bundle: nil);
+        var controller = storyboard.instantiateViewControllerWithIdentifier("login") as UIViewController;
+        let dstController = controller as LoginController;
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func btnContactPressed(sender: AnyObject) {
