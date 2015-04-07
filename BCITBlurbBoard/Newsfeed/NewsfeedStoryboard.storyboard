@@ -308,6 +308,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="newsBar" destination="hSD-RG-mbj" id="8yj-Sy-GeR"/>
                         <outlet property="tableView" destination="Jhy-E3-a6U" id="kbd-mN-VpV"/>
                     </connections>
                 </viewController>

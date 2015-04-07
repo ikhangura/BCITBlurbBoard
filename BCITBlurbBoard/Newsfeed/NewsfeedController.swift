@@ -26,6 +26,7 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
 {
     // outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newsBar: UINavigationItem!
     
     // class variables
     var newsArray : [NewsItem] = []
@@ -52,6 +53,13 @@ class NewsfeedController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         getNews()
+        let appData : GlobalAppData! = GlobalAppData.getGlobalAppData()
+        let role = appData.getUserType()
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        if (role != "admin") {
+            newsBar.leftBarButtonItem = backButton
+        }
+        println(role)
     }
     
     func refresh(sender:AnyObject)

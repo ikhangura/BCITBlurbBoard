@@ -117,7 +117,8 @@ class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        //pickerToCat.hidden = true
+        contentField.hidden = false
+        pickerToCat.hidden = true
     }
     
     
@@ -202,6 +203,8 @@ class NewArticleController: UIViewController, UITextFieldDelegate, UIPickerViewD
             receiverField.enabled = true
             
         }
+        contentField.hidden = false
+        pickerToCat.hidden = true
         checkAllFields()
     }
     
