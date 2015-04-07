@@ -74,6 +74,7 @@ class LoginController: UIViewController {
                         }
                         self.criticalnewslabel.text = newsText;
                         self.fadeInBanner();
+                        println(newsText)
                     }
                 }
             }
