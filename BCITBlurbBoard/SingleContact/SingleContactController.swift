@@ -8,7 +8,8 @@
 
 import UIKit
 import Alamofire
-class SingleContactController : UIViewController
+import MessageUI
+class SingleContactController : UIViewController,MFMailComposeViewControllerDelegate,UITextFieldDelegate, UITextViewDelegate
 {
     
 
@@ -29,11 +30,12 @@ class SingleContactController : UIViewController
         var dept : String;
         
     }
-
+ private var contactDetails : ContactsDetails?;
+    
     @IBOutlet var lblEmail: UILabel!
 let appData = GlobalAppData.getGlobalAppData()
 @IBOutlet var lblTest: UILabel!
- private var contactDetails : ContactsDetails?;
+
 var lblContactId = String();
 
     
@@ -55,6 +57,24 @@ var lblContactId = String();
     @IBOutlet var lblPhone: UILabel!
     
     @IBOutlet var lblLocation: UILabel!
+   
+    
+
+    @IBAction func btnEmail(sender: UIButton) {
+        let url = NSURL(string: "mailto:\(lblEmail.text!)")
+        UIApplication.sharedApplication().openURL(url!)
+    println("printing email and opening it in native app")
+        println(lblEmail.text!)
+    }
+ 
+    
+
+    
+    @IBAction func btnCall(sender: UIButton) {
+      UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + lblPhone.text!)!)
+        println(lblPhone.text)
+     }
+    
 override func viewDidLoad() {
         super.viewDidLoad()
          let token:String! = appData.getUserToken();
