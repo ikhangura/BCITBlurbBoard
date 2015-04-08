@@ -11,7 +11,7 @@ import UIKit
 import Foundation
 import AlamoFire
 
-class SingleArticleController: UIViewController, UITableViewDataSource, UITextViewDelegate {
+class SingleArticleController: UIViewController, UITableViewDataSource, UITextViewDelegate, UITableViewDelegate {
     private struct ArticleComment
     {
         var Comment : String;
@@ -39,6 +39,7 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
     
     var articleID : String!;
     
+    var refreshControl:UIRefreshControl!
     private var baseUrl:String?;
     private var routeGetArticleWithComments:String?;
     private var routeNewCommentForArticle:String?;
@@ -67,6 +68,23 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
         routeNewCommentForArticle = baseUrl! + "/newsfeed/" + userID! + "/article/" + articleID + "/comment/" + userToken!;
         loadData();
         txtReply.delegate = self;
+        tblComment.delegate = self
+        
+        
+        txtReply.layer.borderColor = UIColor.grayColor().CGColor
+        txtReply.layer.borderWidth = 0.2
+        txtReply.layer.cornerRadius = 5.0
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tblComment.addSubview(refreshControl)
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        loadData()
+        self.refreshControl.endRefreshing()
     }
     
     
@@ -197,6 +215,20 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
                         // Data successfully received
                         self.txtReply.text.removeAll(keepCapacity: false);
                         self.lblPostStatus.text = "Your comment has been posted";
+                        UIView.animateWithDuration(1.0, delay: 2.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                            self.lblPostStatus.alpha = 0.0
+                            }, completion: {
+                                (finished: Bool) -> Void in
+                                
+                                //Once the label is completely invisible, set the text and fade it back in
+                                self.lblPostStatus.text = ""
+                                
+                                // Fade in
+                                UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+                                    self.lblPostStatus.alpha = 1.0
+                                    }, completion: nil)
+                        })
+                        self.loadData()
                         return;
                     }
                     else
@@ -211,9 +243,10 @@ class SingleArticleController: UIViewController, UITableViewDataSource, UITextVi
                 }
         }
     }
-    @IBAction func btnBackPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil);    }
     
+    @IBAction func btnBack(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     func textView(textView: UITextView!, shouldChangeTextInRange: NSRange, replacementText: NSString!) -> Bool {
         if(replacementText == "\n") {
             textView.resignFirstResponder()
