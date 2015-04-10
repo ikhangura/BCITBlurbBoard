@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Title-->
+        <scene sceneID="RDV-mi-b6b">
+            <objects>
+                <viewController storyboardIdentifier="contacts" id="mNN-dT-t8q" customClass="ContactsController" customModule="BCITBlurbBoard" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6fh-2M-4JC"/>
+                        <viewControllerLayoutGuide type="bottom" id="N7t-oX-NEc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j90-nD-Iiw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vt1-Ke-2Gh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Contacts" id="N9E-na-LQo">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Svw-EH-0BL">
+                                            <color key="tintColor" red="0.18431372549019609" green="0.70588235294117652" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="btnBack:" destination="mNN-dT-t8q" id="oTA-3W-TqL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7A8-rM-pMb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mNN-dT-t8q" id="B07-nu-Fvg"/>
+                                    <outlet property="delegate" destination="mNN-dT-t8q" id="nLR-OS-0dX"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bom-LW-WOq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" red="0.1843137255" green="0.70588235290000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mNN-dT-t8q" id="Q6s-JE-tWe"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vt1-Ke-2Gh" secondAttribute="trailing" constant="-16" id="5ec-Tg-6g0"/>
+                            <constraint firstItem="bom-LW-WOq" firstAttribute="leading" secondItem="j90-nD-Iiw" secondAttribute="leadingMargin" constant="-16" id="CBQ-eh-y8i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7A8-rM-pMb" secondAttribute="trailing" constant="-16" id="DFa-lh-5it"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bom-LW-WOq" secondAttribute="trailing" constant="-16" id="EEU-JL-NpN"/>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="leading" secondItem="j90-nD-Iiw" secondAttribute="leadingMargin" constant="-16" id="Ejl-a6-Unb"/>
+                            <constraint firstItem="7A8-rM-pMb" firstAttribute="leading" secondItem="j90-nD-Iiw" secondAttribute="leadingMargin" constant="-16" id="MRK-Kv-rCK"/>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="leading" secondItem="j90-nD-Iiw" secondAttribute="leading" id="Pmc-R6-JhY"/>
+                            <constraint firstItem="bom-LW-WOq" firstAttribute="top" secondItem="vt1-Ke-2Gh" secondAttribute="bottom" constant="-19" id="TUU-Dq-qpT">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="N7t-oX-NEc" firstAttribute="top" secondItem="7A8-rM-pMb" secondAttribute="bottom" constant="43" id="eVJ-U0-1be">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="7A8-rM-pMb" firstAttribute="top" secondItem="bom-LW-WOq" secondAttribute="bottom" id="lPe-Kw-PXo"/>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="top" secondItem="6fh-2M-4JC" secondAttribute="bottom" constant="-20" id="qiU-72-jo9">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="vt1-Ke-2Gh" secondAttribute="trailing" id="sLV-wf-3fx"/>
+                            <constraint firstItem="vt1-Ke-2Gh" firstAttribute="top" secondItem="j90-nD-Iiw" secondAttribute="top" id="x57-bz-8qg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="vt1-Ke-2Gh"/>
+                                <exclude reference="7A8-rM-pMb"/>
+                                <exclude reference="bom-LW-WOq"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5ec-Tg-6g0"/>
+                                <exclude reference="Ejl-a6-Unb"/>
+                                <exclude reference="Pmc-R6-JhY"/>
+                                <exclude reference="qiU-72-jo9"/>
+                                <exclude reference="sLV-wf-3fx"/>
+                                <exclude reference="x57-bz-8qg"/>
+                                <exclude reference="CBQ-eh-y8i"/>
+                                <exclude reference="EEU-JL-NpN"/>
+                                <exclude reference="TUU-Dq-qpT"/>
+                                <exclude reference="DFa-lh-5it"/>
+                                <exclude reference="MRK-Kv-rCK"/>
+                                <exclude reference="lPe-Kw-PXo"/>
+                                <exclude reference="eVJ-U0-1be"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="vt1-Ke-2Gh"/>
+                                <include reference="7A8-rM-pMb"/>
+                                <include reference="bom-LW-WOq"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5ec-Tg-6g0"/>
+                                <include reference="Ejl-a6-Unb"/>
+                                <exclude reference="Pmc-R6-JhY"/>
+                                <include reference="qiU-72-jo9"/>
+                                <exclude reference="sLV-wf-3fx"/>
+                                <exclude reference="x57-bz-8qg"/>
+                                <include reference="CBQ-eh-y8i"/>
+                                <include reference="EEU-JL-NpN"/>
+                                <include reference="TUU-Dq-qpT"/>
+                                <include reference="DFa-lh-5it"/>
+                                <include reference="MRK-Kv-rCK"/>
+                                <include reference="lPe-Kw-PXo"/>
+                                <include reference="eVJ-U0-1be"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="sYI-TU-ope"/>
+                    <connections>
+                        <outlet property="searchController" destination="OQO-bY-Y4R" id="uNg-OI-RSg"/>
+                        <outlet property="searchDisplayController" destination="OQO-bY-Y4R" id="LJK-l2-52j"/>
+                        <outlet property="tableView" destination="7A8-rM-pMb" id="AhT-UQ-9Fo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJD-Wb-9tk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="OQO-bY-Y4R">
+                    <connections>
+                        <outlet property="delegate" destination="mNN-dT-t8q" id="Tac-2A-2It"/>
+                        <outlet property="searchBar" destination="bom-LW-WOq" id="a9O-sA-Bkb"/>
+                        <outlet property="searchContentsController" destination="mNN-dT-t8q" id="7hj-Bv-ARj"/>
+                        <outlet property="searchResultsDataSource" destination="mNN-dT-t8q" id="OvH-ol-T0I"/>
+                        <outlet property="searchResultsDelegate" destination="mNN-dT-t8q" id="a2H-HS-6ed"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="-31.5" y="337"/>
+        </scene>
+    </scenes>
+</document>
